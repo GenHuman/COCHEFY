@@ -1,18 +1,28 @@
+import { Injectable } from "@angular/core";
+import { AngularFireDatabase } from "angularfire2/database";
 import { Contact } from "../models/contact.model";
-export class ContactService {
-  private contacts: Contact[] =
-    [{
-      "nombre": "Andres", "organizacion": "UC3M", "movil": "666666666", correo: "andres@example.com"}];
-  constructor() {
-  }
-  addContact(value: Contact) {
-    this.contacts.push(value);
-  }
-  getContacts() {
-    return this.contacts;
-  }
-  updateContact(value: Contact) {
-  }
-  removeContact(value: Contact) {
-  }
+
+@Injectable()
+export class ContactService{
+
+    private contactsRef=this.db.list<Contact>('AgendaFirebase');
+	
+
+    constructor(private db:AngularFireDatabase){}
+
+    addContact(value: Contact){
+       return this.contactsRef.push(value);
+    }
+
+    getContacts(){
+      return this.contactsRef;
+    }
+
+    updateContact(value: Contact){
+		return this.contactsRef.update(value.key,value);
+    }
+
+    removeContact(value: Contact){
+		return this.contactsRef.remove(value.key);
+    }
 }

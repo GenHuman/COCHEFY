@@ -17,7 +17,7 @@
 <ion-content padding>
 
   <ion-list>
-    <button ion-item *ngFor="let contact of contacts">
+      <button ion-item *ngFor="let contact of contacts$ | async">
       <p><strong>Nombre: </strong>{{contact.nombre}}</p>
       <p><strong>Organización: </strong>{{contact.organizacion}}</p>
       <p><strong>Móvil: </strong>{{contact.movil}}</p>

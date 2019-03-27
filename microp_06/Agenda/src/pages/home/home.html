@@ -13,6 +13,12 @@
   <p>
     If you get lost, the <a href="http://ionicframework.com/docs/v2">docs</a> will show you the way.
   </p>
+	<h1>LISTADO DE CLIENTES:</h1>
 
+	<p *ngFor="let cliente of listaClientes ">
+		<button small ion-button (click)="delCliente([cliente.id])">-</button>
+		<button small ion-button (click)="updateCliente([cliente.id])">u</button>
+	{{cliente.nombre}} {{cliente.apellidos}}
+ </p>
   <button ion-button secondary menuToggle>Toggle Menu</button>
 </ion-content>

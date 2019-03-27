@@ -11,7 +11,11 @@ import { NuevoContactoPage } from '../pages/nuevo-contacto/nuevo-contacto';
 import { StatusBar } from '@ionic-native/status-bar';
 import { SplashScreen } from '@ionic-native/splash-screen';
 import {ContactService} from '../services/contact.service';
-import { Services } from '@angular/core/src/view';
+import { AngularFireModule } from 'angularfire2';
+import { AngularFireDatabaseModule } from 'angularfire2/database';
+import { FirebaseDbProvider } from '../providers/firebase-db/firebase-db';
+import { fireBaseConfig } from '../app/firebase.credentials';
+
 
 @NgModule({
   declarations: [
@@ -25,6 +29,8 @@ import { Services } from '@angular/core/src/view';
   imports: [
     BrowserModule,
     IonicModule.forRoot(MyApp),
+	AngularFireModule.initializeApp(fireBaseConfig),
+	AngularFireDatabaseModule
   ],
   bootstrap: [IonicApp],
   entryComponents: [
@@ -39,7 +45,9 @@ import { Services } from '@angular/core/src/view';
     StatusBar,
     SplashScreen,
     { provide: ErrorHandler, useClass: IonicErrorHandler },
-    ContactService
+    ContactService,
+    FirebaseDbProvider
   ]
 })
 export class AppModule { }
+
