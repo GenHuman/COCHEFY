@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { NavController } from 'ionic-angular';
 import { RegisterPage } from '../register/register';
+import { HomePage } from '../home/home';
 
 @Component({
   selector: 'page-login',
@@ -16,8 +17,14 @@ export class LoginPage {
   }
 
   login () {
-      console.log("Username: "+ this.username);
-      console.log("Password: "+ this.password);
+      if (!this.username || !this.password){
+          alert ("Please fill all fields");
+      } else {
+          this.navCtrl.setRoot(HomePage, {
+             username: this.username,
+             userType: "lessor",
+          });
+      }
   }
 
   goRegister () {

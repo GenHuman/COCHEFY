@@ -27,7 +27,8 @@ export class MyApp {
         { title: 'Home', component: HomePage },
         { title: 'List', component: ListPage },
         { title: 'Libreta de Contactos', component: LibretaContactosPage},
-        { title: 'Acerca de', component: AcercaDePage}
+        { title: 'Acerca de', component: AcercaDePage},
+        { title: 'Log Out', component: LoginPage}
     ];
 
   }
