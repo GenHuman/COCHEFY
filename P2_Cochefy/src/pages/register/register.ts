@@ -26,7 +26,7 @@ export class RegisterPage {
   userType:string;
   
   users$: Observable<User[]>;
-  userList;
+  userList: User[];
 
   constructor(public navCtrl: NavController, public navParams: NavParams, private UserService:UserService, public dbFirebase:FirebaseDbProviderUser) {
   
@@ -39,6 +39,8 @@ export class RegisterPage {
           key: c.payload.key, ...c.payload.val()
         }));
       }); 
+	  
+	 
 
   }
 
@@ -48,9 +50,24 @@ export class RegisterPage {
   
   ngOnInit()
  {
-	 
+	 this.UserService
+    .getUsers().valueChanges() //cambios
+	 .subscribe(userList => {
+				//userList = userList;
+                console.log(userList);
+                userList.forEach((item) => {
+                   console.log(item.username);
+                });
+            });
+    /*.map(
+      changes => {
+		  
+        return changes.map(c=> ({
+          key: c.payload.key, ...c.payload.val()
+        }));
+      }); 
    
-	//alert(users$);
+	alert(userList);*/
  }
 
   register(value: {nombre:string,contrasenha:string,tipo:string}) {  
@@ -68,7 +85,21 @@ export class RegisterPage {
       } else if (this.password != this.repassword){
           alert ("The two passwords must be the same");
       } else {
-		  alert(this.UserService.getUserByName(this.username));
+		  alert(this.userList);
+		  if(!usernameInUse){
+		  this.UserService
+			.getUsers().valueChanges() //cambios
+			.subscribe(userList => {
+				//userList = userList;
+                console.log(userList);
+                userList.forEach((item) => {
+                   if(this.username == item.username){
+					usernameInUse = true;
+					alert ("That username is already in use");
+				   }
+                });
+            });
+		  }
 		  /*for(var user of this.users$){
 			  alert(user.username);
 			if(user.username == username && !usernameInUse){
