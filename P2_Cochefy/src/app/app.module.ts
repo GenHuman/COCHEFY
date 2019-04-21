@@ -13,10 +13,12 @@ import { NuevoContactoPage } from '../pages/nuevo-contacto/nuevo-contacto';
 import { StatusBar } from '@ionic-native/status-bar';
 import { SplashScreen } from '@ionic-native/splash-screen';
 import {ContactService} from '../services/contact.service';
+import { UserService } from '../services/user.service';
 import { AngularFireModule } from 'angularfire2';
 import { AngularFireDatabaseModule } from 'angularfire2/database';
 import { FirebaseDbProvider } from '../providers/firebase-db/firebase-db';
 import { fireBaseConfig } from '../app/firebase.credentials';
+import { FirebaseDbProviderUser } from '../providers/firebase-db/firebase-db-user';
 
 
 @NgModule({
@@ -52,7 +54,9 @@ import { fireBaseConfig } from '../app/firebase.credentials';
     SplashScreen,
     { provide: ErrorHandler, useClass: IonicErrorHandler },
     ContactService,
-    FirebaseDbProvider
+    FirebaseDbProvider,
+	UserService,
+	FirebaseDbProviderUser
   ]
 })
 export class AppModule { }

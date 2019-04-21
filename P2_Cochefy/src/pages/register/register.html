@@ -11,24 +11,31 @@
 </ion-header>
 
 <ion-content padding>
+ <form (ngSubmit)="register(f.value)" #f="ngForm">
   <ion-list>
     <ion-item>
-      <ion-input placeholder="Username" [(ngModel)]="username"></ion-input>
+      <ion-input placeholder="Username" [(ngModel)]="username" name="username"></ion-input>
     </ion-item>
     <ion-item>
-      <ion-input placeholder="Password" [(ngModel)]="password" type="password"></ion-input>
+      <ion-input placeholder="Password" [(ngModel)]="password" type="password" name="password"></ion-input>
     </ion-item>
     <ion-item>
-      <ion-input placeholder="Repeat Password" [(ngModel)]="repassword" type="password"></ion-input>
+      <ion-input placeholder="Repeat Password" [(ngModel)]="repassword" type="password" name="password"></ion-input>
     </ion-item>
     <ion-item id="select-input">
       <ion-label>Type of User</ion-label>
-      <ion-select placeholder="Select" [(ngModel)]="userType">
+      <ion-select placeholder="Select" [(ngModel)]="userType" name="userType">
         <ion-option value="lessor">Lessor</ion-option>
         <ion-option value="company">Company</ion-option>
       </ion-select>
     </ion-item>
   </ion-list>
 
-  <button ion-button full (click)="register()">Register</button>
+ <button ion-button block type="submit" [disabled]="!f.valid">Register</button>
+ </form>
+ <ion-list>
+      <button ion-item *ngFor="let contact of users$ | async">
+      <p><strong>Nombre: </strong>{{contact.username}}</p>
+    </button>
+  </ion-list>
 </ion-content>
