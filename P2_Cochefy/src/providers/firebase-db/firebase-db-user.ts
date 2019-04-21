@@ -12,19 +12,19 @@ import {User} from '../../models/user.model';
 @Injectable()
 export class FirebaseDbProviderUser {
 
-private usersRef=this.afDB.list<User>('users');
+private usersRef=this.afDB.list<Users>('users');
 
   constructor(public afDB: AngularFireDatabase) {
-    console.log('Hello FirebaseDbProvider Provkeyer');
+    console.log('Hello FirebaseDbProviderUser Provkeyer');
   }
   
   guardaUser(user:User){
     if (user.key=='') {user.key=""+Date.now();}
-    return this.afDB.database.ref('users/'+user.key).set(user);
+    return this.afDB.database.ref('users/'+user.username).set(user);
   }
 
-  delUser(key){
-    this.afDB.database.ref('users/'+key).remove();
+  delUser(username){
+    this.afDB.database.ref('users/'+username).remove();
   }
   
   

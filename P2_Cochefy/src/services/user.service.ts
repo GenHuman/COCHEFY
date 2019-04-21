@@ -27,8 +27,7 @@ export class UserService{
     }
 	
 	getUserByName(name:string){
-		return this.db.object('/UserFirebase', ref => ref.orderByChild('username').equalTo(name));
-		//const user = this.af.database.object(`users/${login}`);
+		return this.db.list('/UserFirebase', ref => ref.orderByChild('username').equalTo(name));
 	}
 
 }
