@@ -1,7 +1,8 @@
 import { Component } from '@angular/core';
 import { NavController } from 'ionic-angular';
 import { RegisterPage } from '../register/register';
-import { HomePage } from '../home/home';
+import { AnunciosPage } from '../anuncios/anuncios';
+import { AnunciosArrendadorPage } from '../anuncios-arrendador/anuncios-arrendador';
 
 @Component({
   selector: 'page-login',
@@ -11,6 +12,7 @@ export class LoginPage {
 
   username:string;
   password:string;
+  userType:string;
 
   constructor(public navCtrl: NavController) {
 
@@ -20,10 +22,13 @@ export class LoginPage {
       if (!this.username || !this.password){
           alert ("Please fill all fields");
       } else {
-          this.navCtrl.setRoot(HomePage, {
-             username: this.username,
-             userType: "lessor",
-          });
+          window.localStorage.setItem("username",JSON.stringify(this.username));
+          this.userType = "lessor";
+          if (this.userType == "lessor"){
+              this.navCtrl.setRoot(AnunciosPage)
+          } else {
+              this.navCtrl.setRoot(AnunciosArrendadorPage)
+          }
       }
   }
 

@@ -3,11 +3,16 @@ import { Nav, Platform } from 'ionic-angular';
 import { StatusBar } from '@ionic-native/status-bar';
 import { SplashScreen } from '@ionic-native/splash-screen';
 
-import { HomePage } from '../pages/home/home';
+import { AcercaDePage } from '../pages/acerca-de/acerca-de';
+import { AnunciosPage } from '../pages/anuncios/anuncios';
 import { LoginPage } from '../pages/login/login';
+import { MisReservasPage } from '../pages/mis-reservas/mis-reservas';
+import { MisAlquileresPage } from '../pages/mis-alquileres/mis-alquileres';
+import { AnunciosArrendadorPage } from '../pages/anuncios-arrendador/anuncios-arrendador';
+
+//eliminar
 import { ListPage } from '../pages/list/list';
 import { LibretaContactosPage } from '../pages/libreta-contactos/libreta-contactos';
-import { AcercaDePage } from '../pages/acerca-de/acerca-de';
 
 @Component({
   templateUrl: 'app.html'
@@ -15,18 +20,29 @@ import { AcercaDePage } from '../pages/acerca-de/acerca-de';
 export class MyApp {
   @ViewChild(Nav) nav: Nav;
 
-  rootPage: any = LoginPage;
+  rootPage: any = AnunciosPage;
 
-  pages: Array<{title: string, component: any}>;
+  pagesArrendador: Array<{title: string, component: any}>;
+  pagesArrendatario: Array<{title: string, component: any}>;
 
   constructor(public platform: Platform, public statusBar: StatusBar, public splashScreen: SplashScreen) {
     this.initializeApp();
 
     // used for an example of ngFor and navigation
-    this.pages = [
-        { title: 'Home', component: HomePage },
+    this.pagesArrendatario = [
+        { title: 'Mis Anuncios', component: AnunciosPage },
+        { title: 'Mis Reservas', component: MisReservasPage },
+        { title: 'Acerca de', component: AcercaDePage},
+        { title: 'Log Out', component: LoginPage},
+
+        //eliminar
         { title: 'List', component: ListPage },
         { title: 'Libreta de Contactos', component: LibretaContactosPage},
+    ];
+
+    this.pagesArrendador = [
+        { title: 'Anuncios', component: AnunciosArrendadorPage },
+        { title: 'Mis Alquileres', component: MisAlquileresPage},
         { title: 'Acerca de', component: AcercaDePage},
         { title: 'Log Out', component: LoginPage}
     ];
