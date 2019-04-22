@@ -16,9 +16,11 @@ import { SplashScreen } from '@ionic-native/splash-screen';
 import {AnuncioService} from '../services/anuncio.service';
 import {OfertaService} from '../services/oferta.service';
 import {ReservaService} from '../services/reserva.service';
+import { UserService } from '../services/user.service';
 import { AngularFireModule } from 'angularfire2';
 import { AngularFireDatabaseModule } from 'angularfire2/database';
 import { FirebaseDbProvider } from '../providers/firebase-db/firebase-db';
+import { FirebaseDbProviderUser } from '../providers/firebase-db/firebase-db-user';
 import { fireBaseConfig } from '../app/firebase.credentials';
 
 //eliminar
@@ -76,7 +78,9 @@ import { NuevoContactoPage } from '../pages/nuevo-contacto/nuevo-contacto';
     AnuncioService,
     OfertaService,
     ReservaService,
+	UserService,
     FirebaseDbProvider
+	
   ]
 })
 export class AppModule { }
