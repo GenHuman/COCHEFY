@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { NavController, NavParams, MenuController } from 'ionic-angular';
 import { Anuncio } from '../../models/anuncio.model';
+import { AnuncioService } from '../../services/anuncio.service';
 import { AnunciosPage } from '../anuncios/anuncios';
 //import { DatePicker } from '@ionic-native/date-picker/ngx';
 
@@ -24,7 +25,7 @@ export class NuevoAnuncioPage {
 
     // anuncios$: Observable<Anuncio[]>;
 
-    constructor(public navCtrl: NavController, public navParams: NavParams, public menuCtrl: MenuController) {
+    constructor(public navCtrl: NavController, public navParams: NavParams, public menuCtrl: MenuController, public anuncioService: AnuncioService) {
       this.username = JSON.parse(window.localStorage.getItem("username"));
     }
 
@@ -57,11 +58,13 @@ export class NuevoAnuncioPage {
 		console.log(
 		"nPersonas="+this.nPersonas+
 		",fSalida="+this.fSalida+
-	",fRecogida="+this.fRecogida+
-	",distancia="+this.distancia+
-	",asegurado="+this.asegurado+
-	",cancelacion="+this.cancelacion);
-	
+		",fRecogida="+this.fRecogida+
+		",distancia="+this.distancia+
+		",asegurado="+this.asegurado+
+		",cancelacion="+this.cancelacion);
+		var anuncio = {nombreUsuario: this.username,nPersonas:this.nPersonas, fSalida:this.fSalida, fRecogida:this.fRecogida, localizacion:"", distancia:this.distancia, asegurado:this.asegurado, cancelacion:this.cancelacion, alquilado:false}
+		//alert(anuncio);
+		this.anuncioService.addAnuncio(anuncio);
 		
 
 	}

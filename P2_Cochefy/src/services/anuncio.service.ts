@@ -5,7 +5,7 @@ import { Anuncio } from "../models/anuncio.model";
 @Injectable()
 export class AnuncioService{
 
-    private anunciosRef=this.db.list<Anuncio>('AgendaFirebase');
+    private anunciosRef=this.db.list<Anuncio>('AnunciosFirebase');
 
 
     constructor(private db:AngularFireDatabase){}
