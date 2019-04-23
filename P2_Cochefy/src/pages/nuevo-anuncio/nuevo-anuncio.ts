@@ -1,15 +1,19 @@
 import { Component } from '@angular/core';
 import { NavController, NavParams, MenuController } from 'ionic-angular';
 import { Anuncio } from '../../models/anuncio.model';
-import { NuevoAnuncioPage } from '../nuevo-anuncio/nuevo-anuncio';
+import { AnunciosPage } from '../anuncios/anuncios';
+//import { DatePicker } from '@ionic-native/date-picker/ngx';
 
 @Component({
-  selector: 'page-anuncios',
-  templateUrl: 'anuncios.html'
+  selector: 'page-nuevo-anuncio',
+  templateUrl: 'nuevo-anuncio.html'
 })
-export class AnunciosPage {
+
+export class NuevoAnuncioPage {
 
     username:string;
+	
+	today = new Date();
 
     // anuncios$: Observable<Anuncio[]>;
 
@@ -38,8 +42,30 @@ export class AnunciosPage {
         this.menuCtrl.enable(true, 'arrendatarioMenu');
     }
 	
-	nuevoAnuncio () {
-		this.navCtrl.push(NuevoAnuncioPage);
+	cancelar () {
+		this.navCtrl.push(AnunciosPage);
 	}
+	
+		/*showDatepicker1(){
+		this.datePicker.show({
+		  date: new Date(),
+		  mode: 'date',
+		  androidTheme: this.datePicker.ANDROID_THEMES.THEME_HOLO_DARK
+		}).then(
+		  date => console.log('Got date: ', date),
+		  err => console.log('Error occurred while getting date: ', err)
+		);
+	}
+	
+	showDatepicker2(){
+		this.datePicker.show({
+		  date: new Date(),
+		  mode: 'date',
+		  androidTheme: this.datePicker.ANDROID_THEMES.THEME_HOLO_DARK
+		}).then(
+		  date => console.log('Got date: ', date),
+		  err => console.log('Error occurred while getting date: ', err)
+		);
+	}*/
 
 }

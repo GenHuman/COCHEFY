@@ -70,7 +70,7 @@ export class RegisterPage {
 	alert(userList);*/
  }
 
-	register(value: {nombre:string,contrasenha:string,tipo:string}) {  
+	register(value: {username:string,password:string,userType:string}) {  
 
 		var usernameInUse = false;
 		if (!this.username || !this.password || !this.repassword || !this.userType){

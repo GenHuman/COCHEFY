@@ -12,7 +12,7 @@ import {User} from '../../models/user.model';
 @Injectable()
 export class FirebaseDbProviderUser {
 
-private usersRef=this.afDB.list<Users>('users');
+private usersRef=this.afDB.list<User>('users');
 
   constructor(public afDB: AngularFireDatabase) {
     console.log('Hello FirebaseDbProviderUser Provkeyer');

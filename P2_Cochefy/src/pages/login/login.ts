@@ -3,6 +3,7 @@ import { NavController } from 'ionic-angular';
 import { RegisterPage } from '../register/register';
 import { AnunciosPage } from '../anuncios/anuncios';
 import { UserService } from '../../services/user.service';
+import { User } from '../../models/user.model';
 import { AnunciosArrendadorPage } from '../anuncios-arrendador/anuncios-arrendador';
 
 @Component({

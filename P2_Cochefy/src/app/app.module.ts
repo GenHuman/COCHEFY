@@ -7,6 +7,7 @@ import { LoginPage } from '../pages/login/login';
 import { AcercaDePage } from '../pages/acerca-de/acerca-de';
 import { RegisterPage } from '../pages/register/register';
 import { OfertasPage } from '../pages/ofertas/ofertas';
+import { NuevoAnuncioPage } from '../pages/nuevo-anuncio/nuevo-anuncio';
 import { MisReservasPage } from '../pages/mis-reservas/mis-reservas';
 import { MisAlquileresPage } from '../pages/mis-alquileres/mis-alquileres';
 import { HacerOfertaPage } from '../pages/hacer-oferta/hacer-oferta';
@@ -37,6 +38,7 @@ import { NuevoContactoPage } from '../pages/nuevo-contacto/nuevo-contacto';
     RegisterPage,
     MisReservasPage,
     OfertasPage,
+	NuevoAnuncioPage,
     AcercaDePage,
     MisAlquileresPage,
     AnunciosArrendadorPage,
@@ -57,6 +59,7 @@ import { NuevoContactoPage } from '../pages/nuevo-contacto/nuevo-contacto';
   entryComponents: [
     MyApp,
     AnunciosPage,
+	NuevoAnuncioPage,
     LoginPage,
     RegisterPage,
     AcercaDePage,
