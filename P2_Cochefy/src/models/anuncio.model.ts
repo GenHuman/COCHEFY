@@ -5,7 +5,7 @@ export interface Anuncio {
  fSalida: string;
  fRecogida: string;
  localizacion: string;
- nKm: string;
+ distancia: string;
  asegurado: string;
  cancelacion: string;
  alquilado: string;

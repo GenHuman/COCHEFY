@@ -11,9 +11,16 @@ import { AnunciosPage } from '../anuncios/anuncios';
 
 export class NuevoAnuncioPage {
 
-    username:string;
+    username: string;
 	
 	today = new Date();
+	
+	nPersonas: number;
+	fSalida: string;
+	fRecogida: string;
+	distancia: number;
+	asegurado = false;
+	cancelacion = false;
 
     // anuncios$: Observable<Anuncio[]>;
 
@@ -44,6 +51,19 @@ export class NuevoAnuncioPage {
 	
 	cancelar () {
 		this.navCtrl.push(AnunciosPage);
+	}
+	
+	confirmarOferta () {
+		console.log(
+		"nPersonas="+this.nPersonas+
+		",fSalida="+this.fSalida+
+	",fRecogida="+this.fRecogida+
+	",distancia="+this.distancia+
+	",asegurado="+this.asegurado+
+	",cancelacion="+this.cancelacion);
+	
+		
+
 	}
 	
 		/*showDatepicker1(){
