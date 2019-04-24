@@ -62,9 +62,9 @@ export class NuevoAnuncioPage {
 			}else{
 				alert("Tienes que rellenar la distancia a recorrer en el viaje.")
 				//document.getElementById("personasInput").focus();
-				//document.getElementById("personasInput").parentNode.classList.add = "show";
+				//document.getElementById("personasInput").parentNode.classList.add("show");
 
-				//document.getElementById("personasInput").classList.add = "step";
+				//document.getElementById("personasInput").classList.add("step");
 			}
 			}else{
 				alert("Tienes que rellenar el lugar de recogida del vehículo.")
