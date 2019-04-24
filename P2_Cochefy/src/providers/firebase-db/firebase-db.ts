@@ -1,7 +1,6 @@
 
 import { Injectable } from '@angular/core';
 import { AngularFireDatabase} from 'angularfire2/database';
-import {Contact} from '../../models/contact.model';
 import {Anuncio} from '../../models/anuncio.model';
 import {Oferta} from '../../models/oferta.model';
 import {Reserva} from '../../models/reserva.model';
@@ -15,24 +14,24 @@ import {Reserva} from '../../models/reserva.model';
 @Injectable()
 export class FirebaseDbProvider {
 
-private contactsRef=this.afDB.list<Contact>('contacts');
+private anuncioRef=this.afDB.list<Anuncio>('Anuncios');
 
   constructor(public afDB: AngularFireDatabase) {
     console.log('Hello FirebaseDbProvider Provkeyer');
   }
 
-  guardaContact(contact:Contact){
-    if (contact.key=='') {contact.key=""+Date.now();}
-    return this.afDB.database.ref('contacts/'+contact.key).set(contact);
+  guardaAnuncio(contact:Anuncio){
+    if (contact.id=='') {contact.id=""+Date.now();}
+    return this.afDB.database.ref('contacts/'+contact.id).set(contact);
   }
 
-  delContact(key){
-    this.afDB.database.ref('contacts/'+key).remove();
+  delAnuncio(id){
+    this.afDB.database.ref('Anuncios/'+id).remove();
   }
 
 
-  getContacts(){
-	return this.contactsRef.valueChanges();
+  getAnuncio(){
+	return this.anuncioRef.valueChanges();
   }
 
 }

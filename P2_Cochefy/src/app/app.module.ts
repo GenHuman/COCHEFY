@@ -24,11 +24,6 @@ import { FirebaseDbProvider } from '../providers/firebase-db/firebase-db';
 import { FirebaseDbProviderUser } from '../providers/firebase-db/firebase-db-user';
 import { fireBaseConfig } from '../app/firebase.credentials';
 
-//eliminar
-import { ListPage } from '../pages/list/list';
-import { LibretaContactosPage } from
-  '../pages/libreta-contactos/libreta-contactos';
-import { NuevoContactoPage } from '../pages/nuevo-contacto/nuevo-contacto';
 
 @NgModule({
   declarations: [
@@ -42,12 +37,7 @@ import { NuevoContactoPage } from '../pages/nuevo-contacto/nuevo-contacto';
     AcercaDePage,
     MisAlquileresPage,
     AnunciosArrendadorPage,
-    HacerOfertaPage,
-
-    //eliminar
-    ListPage,
-    LibretaContactosPage,
-    NuevoContactoPage
+    HacerOfertaPage
   ],
   imports: [
     BrowserModule,
@@ -69,10 +59,6 @@ import { NuevoContactoPage } from '../pages/nuevo-contacto/nuevo-contacto';
     AnunciosArrendadorPage,
     HacerOfertaPage,
 
-    //eliminar
-    ListPage,
-    LibretaContactosPage,
-    NuevoContactoPage
   ],
   providers: [
     StatusBar,

@@ -9,10 +9,8 @@ import { LoginPage } from '../pages/login/login';
 import { MisReservasPage } from '../pages/mis-reservas/mis-reservas';
 import { MisAlquileresPage } from '../pages/mis-alquileres/mis-alquileres';
 import { AnunciosArrendadorPage } from '../pages/anuncios-arrendador/anuncios-arrendador';
+import 'rxjs/add/operator/map'
 
-//eliminar
-import { ListPage } from '../pages/list/list';
-import { LibretaContactosPage } from '../pages/libreta-contactos/libreta-contactos';
 
 @Component({
   templateUrl: 'app.html'
@@ -35,9 +33,7 @@ export class MyApp {
         { title: 'Acerca de', component: AcercaDePage},
         { title: 'Log Out', component: LoginPage},
 
-        //eliminar
-        { title: 'List', component: ListPage },
-        { title: 'Libreta de Contactos', component: LibretaContactosPage},
+
     ];
 
     this.pagesArrendador = [
