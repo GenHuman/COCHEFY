@@ -15,38 +15,53 @@
   <ion-list *ngFor="let anuncio of anuncios$ | async">
       <ion-card>
         <ion-card-header>
-          <ion-card-title><ion-icon name='person'></ion-icon>&nbsp;#Usuario</ion-card-title>
+          <ion-card-title><ion-icon name='person'></ion-icon>&nbsp;{{anuncio.nombreUsuario}}</ion-card-title>
         </ion-card-header>
 
         <ion-card-content>
             <button ion-button clear color="dark" icon-start>
-              <ion-icon name='people'></ion-icon>
-              2-3
+              <ion-icon name='calendar'></ion-icon>
+              {{anuncio.fSalida}} - {{anuncio.fRecogida}}
             </button>
             <button ion-button clear color="dark" icon-start>
-              <ion-icon name='calendar'></ion-icon>
-              #Fecha1 - #Fecha2
+              <ion-icon name='people'></ion-icon>
+              {{anuncio.nPersonas}}
             </button>
             <button ion-button clear color="dark" icon-start>
               <ion-icon name='pin'></ion-icon>
-              #Location
+              {{anuncio.localizacion}}
             </button>
             <button ion-button clear color="dark" icon-start>
               <ion-icon name='car'></ion-icon>
-              #kms km
+              {{anuncio.distancia}} km
             </button>
             <button ion-button clear color="dark" icon-start>
-              <ion-icon name='checkmark'></ion-icon>
+                <span *ngIf="anuncio.asegurado">
+                    <ion-icon name='checkmark'></ion-icon>
+                </span>
+                <span *ngIf="!anuncio.asegurado">
+                    <ion-icon name='close'></ion-icon>
+                </span>
               Seguro
             </button>
             <button ion-button clear color="dark" icon-start>
-              <ion-icon name='close'></ion-icon>
+                <span *ngIf="anuncio.cancelacion">
+                    <ion-icon name='checkmark'></ion-icon>
+                </span>
+                <span *ngIf="!anuncio.cancelacion">
+                    <ion-icon name='close'></ion-icon>
+                </span>
               Cancelación
             </button>
         </ion-card-content>
         <ion-row>
             <ion-col text-center>
-                <button ion-button round (click)="verOfertas()">Ver Ofertas</button>
+                <span *ngIf="anuncio.alquilado">
+                      <h4 ion-text color="danger">Reservado!</h4>
+                </span>
+                <span *ngIf="!anuncio.alquilado">
+                    <button ion-button round (click)="verOfertas()">Ver Ofertas</button>
+                </span>
             </ion-col>
         </ion-row>
         <hr>

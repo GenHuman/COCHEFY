@@ -1,7 +1,9 @@
 import { Component } from '@angular/core';
 import { NavController, NavParams, MenuController } from 'ionic-angular';
+import { AnuncioService } from '../../services/anuncio.service';
 import { Anuncio } from '../../models/anuncio.model';
 import { NuevoAnuncioPage } from '../nuevo-anuncio/nuevo-anuncio';
+import { Observable, from } from 'rxjs';
 
 @Component({
   selector: 'page-anuncios',
@@ -11,33 +13,37 @@ export class AnunciosPage {
 
     username:string;
 
-    // anuncios$: Observable<Anuncio[]>;
+    anuncios$: Observable<Anuncio[]>;
 
-    constructor(public navCtrl: NavController, public navParams: NavParams, public menuCtrl: MenuController) {
+    constructor(public navCtrl: NavController, public navParams: NavParams, public menuCtrl: MenuController, private AnuncioService: AnuncioService) {
       this.username = JSON.parse(window.localStorage.getItem("username"));
     }
 
     ionViewDidEnter()
    {
-       // this.anuncios$ = [{
-       //     id: "1",
-       //     nombreUsuario: "string",
-       //     nPersonas: "string",
-       //     fSalida: "string",
-       //     fRecogida: "string",
-       //     localizacion: "string",
-       //     nKm: "string",
-       //     asegurado: "string",
-       //     cancelacion: "string",
-       //     alquilado: "string",
-       // }]
+       this.anuncios$ = this.AnuncioService
+        .getAnuncios().snapshotChanges() //cambios
+        .map(
+          changes => {
+            return changes.filter (c => {
+                let anuncio = c.payload.val()
+                if (anuncio.nombreUsuario == this.username) {
+                    return true;
+                } else return false;
+            })
+            .map(c => {
+                 return {
+                      ...c.payload.val()
+                 }
+             });
+          });
    }
 
     ionViewDidLoad() {
         this.menuCtrl.enable(false, 'arrendadorMenu');
         this.menuCtrl.enable(true, 'arrendatarioMenu');
     }
-	
+
 	nuevoAnuncio () {
 		this.navCtrl.push(NuevoAnuncioPage);
 	}

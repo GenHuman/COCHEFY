@@ -11,7 +11,9 @@ export class AnuncioService{
     constructor(private db:AngularFireDatabase){}
 
     addAnuncio(value: Anuncio){
-       return this.anunciosRef.push(value);
+       var ref = this.anunciosRef.push(value);
+       value.id = ref.key;
+       return this.updateAnuncio(value);
     }
 
     getAnuncios(){

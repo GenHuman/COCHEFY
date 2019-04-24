@@ -13,9 +13,9 @@ import { AnunciosPage } from '../anuncios/anuncios';
 export class NuevoAnuncioPage {
 
     username: string;
-	
+
 	today = new Date();
-	
+
 	nPersonas: number;
 	fSalida: string;
 	fRecogida: string;
@@ -29,31 +29,15 @@ export class NuevoAnuncioPage {
       this.username = JSON.parse(window.localStorage.getItem("username"));
     }
 
-    ionViewDidEnter()
-   {
-       // this.anuncios$ = [{
-       //     id: "1",
-       //     nombreUsuario: "string",
-       //     nPersonas: "string",
-       //     fSalida: "string",
-       //     fRecogida: "string",
-       //     localizacion: "string",
-       //     nKm: "string",
-       //     asegurado: "string",
-       //     cancelacion: "string",
-       //     alquilado: "string",
-       // }]
-   }
-
     ionViewDidLoad() {
         this.menuCtrl.enable(false, 'arrendadorMenu');
         this.menuCtrl.enable(true, 'arrendatarioMenu');
     }
-	
+
 	cancelar () {
-		this.navCtrl.push(AnunciosPage);
+		this.navCtrl.setRoot(AnunciosPage);
 	}
-	
+
 	confirmarOferta () {
 		console.log(
 		"nPersonas="+this.nPersonas+
@@ -65,30 +49,8 @@ export class NuevoAnuncioPage {
 		var anuncio = {nombreUsuario: this.username,nPersonas:this.nPersonas, fSalida:this.fSalida, fRecogida:this.fRecogida, localizacion:"", distancia:this.distancia, asegurado:this.asegurado, cancelacion:this.cancelacion, alquilado:false}
 		//alert(anuncio);
 		this.anuncioService.addAnuncio(anuncio);
-		
+        this.navCtrl.setRoot(AnunciosPage);
 
 	}
-	
-		/*showDatepicker1(){
-		this.datePicker.show({
-		  date: new Date(),
-		  mode: 'date',
-		  androidTheme: this.datePicker.ANDROID_THEMES.THEME_HOLO_DARK
-		}).then(
-		  date => console.log('Got date: ', date),
-		  err => console.log('Error occurred while getting date: ', err)
-		);
-	}
-	
-	showDatepicker2(){
-		this.datePicker.show({
-		  date: new Date(),
-		  mode: 'date',
-		  androidTheme: this.datePicker.ANDROID_THEMES.THEME_HOLO_DARK
-		}).then(
-		  date => console.log('Got date: ', date),
-		  err => console.log('Error occurred while getting date: ', err)
-		);
-	}*/
 
 }
