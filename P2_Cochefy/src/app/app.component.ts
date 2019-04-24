@@ -20,7 +20,7 @@ import { LibretaContactosPage } from '../pages/libreta-contactos/libreta-contact
 export class MyApp {
   @ViewChild(Nav) nav: Nav;
 
-  rootPage: any = AnunciosPage;
+  rootPage: any = AnunciosArrendadorPage;
 
   pagesArrendador: Array<{title: string, component: any}>;
   pagesArrendatario: Array<{title: string, component: any}>;
