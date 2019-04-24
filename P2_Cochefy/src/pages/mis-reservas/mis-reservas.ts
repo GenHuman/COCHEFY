@@ -1,6 +1,9 @@
 import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams, MenuController } from 'ionic-angular';
-import { Reserva } from '../../models/reserva.model';
+import { AnuncioService } from '../../services/anuncio.service';
+import { Anuncio } from '../../models/anuncio.model';
+import { NuevoAnuncioPage } from '../nuevo-anuncio/nuevo-anuncio';
+import { Observable } from 'rxjs';
 
 /**
  * Generated class for the MisReservasPage page.
@@ -18,7 +21,9 @@ export class MisReservasPage {
 
     username:string;
 
-    constructor(public navCtrl: NavController, public navParams: NavParams, public menuCtrl: MenuController) {
+    anuncios$: Observable<Anuncio[]>;
+
+    constructor(public navCtrl: NavController, public navParams: NavParams, public menuCtrl: MenuController, private AnuncioService: AnuncioService) {
       this.username = JSON.parse(window.localStorage.getItem("username"));
     }
 
@@ -26,5 +31,29 @@ export class MisReservasPage {
       this.menuCtrl.enable(false, 'arrendadorMenu');
       this.menuCtrl.enable(true, 'arrendatarioMenu');
   }
+
+  ionViewDidEnter()
+ {
+     this.anuncios$ = this.AnuncioService
+      .getAnuncios().snapshotChanges() //cambios
+      .map(
+        changes => {
+          return changes.filter (c => {
+              let anuncio = c.payload.val()
+              if (anuncio.nombreUsuario == this.username && anuncio.alquilado) {
+                  return true;
+              } else return false;
+          })
+          .map(c => {
+               return {
+                    ...c.payload.val()
+               }
+           });
+        });
+ }
+
+ verReserva(){
+     alert("Reserva!!")
+ }
 
 }

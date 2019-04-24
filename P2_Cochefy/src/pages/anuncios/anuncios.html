@@ -60,7 +60,7 @@
                       <h4 ion-text color="danger">Reservado!</h4>
                 </span>
                 <span *ngIf="!anuncio.alquilado">
-                    <button ion-button round (click)="verOfertas()">Ver Ofertas</button>
+                    <button ion-button round (click)="verOfertas(anuncio.id)">Ver Ofertas</button>
                 </span>
             </ion-col>
         </ion-row>

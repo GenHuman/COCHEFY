@@ -3,7 +3,8 @@ import { NavController, NavParams, MenuController } from 'ionic-angular';
 import { AnuncioService } from '../../services/anuncio.service';
 import { Anuncio } from '../../models/anuncio.model';
 import { NuevoAnuncioPage } from '../nuevo-anuncio/nuevo-anuncio';
-import { Observable, from } from 'rxjs';
+import { OfertasPage } from '../ofertas/ofertas';
+import { Observable } from 'rxjs';
 
 @Component({
   selector: 'page-anuncios',
@@ -47,5 +48,11 @@ export class AnunciosPage {
 	nuevoAnuncio () {
 		this.navCtrl.push(NuevoAnuncioPage);
 	}
+
+    verOfertas (id) {
+        this.navCtrl.push(OfertasPage, {
+            anuncioId: id
+        });
+    }
 
 }

@@ -14,5 +14,79 @@
 </ion-header>
 
 <ion-content padding>
+  <div>
+      <h2 style="float:left;">Mis reservas</h2>
+  </div>
+  <ion-list *ngFor="let anuncio of anuncios$ | async">
+      <ion-card>
+        <ion-card-header>
+          <ion-card-title><ion-icon name='person'></ion-icon>&nbsp;{{anuncio.nombreUsuario}}</ion-card-title>
+        </ion-card-header>
+
+        <ion-card-content>
+            <button ion-button clear color="dark" icon-start>
+              <ion-icon name='calendar'></ion-icon>
+              {{anuncio.fSalida}} - {{anuncio.fRecogida}}
+            </button>
+            <button ion-button clear color="dark" icon-start>
+              <ion-icon name='people'></ion-icon>
+              {{anuncio.nPersonas}}
+            </button>
+            <button ion-button clear color="dark" icon-start>
+              <ion-icon name='pin'></ion-icon>
+              {{anuncio.localizacion}}
+            </button>
+            <button ion-button clear color="dark" icon-start>
+              <ion-icon name='car'></ion-icon>
+              {{anuncio.distancia}} km
+            </button>
+            <button ion-button clear color="dark" icon-start>
+                <span *ngIf="anuncio.asegurado">
+                    <ion-icon name='checkmark'></ion-icon>
+                </span>
+                <span *ngIf="!anuncio.asegurado">
+                    <ion-icon name='close'></ion-icon>
+                </span>
+              Seguro
+            </button>
+            <button ion-button clear color="dark" icon-start>
+                <span *ngIf="anuncio.cancelacion">
+                    <ion-icon name='checkmark'></ion-icon>
+                </span>
+                <span *ngIf="!anuncio.cancelacion">
+                    <ion-icon name='close'></ion-icon>
+                </span>
+              Cancelación
+            </button>
+        </ion-card-content>
+        <ion-row>
+            <ion-col text-center>
+                    <button ion-button round (click)="verReserva()">Ver Reserva</button>
+            </ion-col>
+        </ion-row>
+        <hr>
+        <ion-row no-padding>
+          <ion-col>
+            <button ion-button clear small class="fav-icon" icon-start>
+              <ion-icon name='star'></ion-icon>
+              Fav
+            </button>
+          </ion-col>
+          <ion-col>
+            <button ion-button clear small class="save-icon" icon-start>
+              <ion-icon name='text'></ion-icon>
+              Comment
+            </button>
+          </ion-col>
+          <ion-col>
+            <button ion-button clear small icon-start>
+              <ion-icon name='share-alt'></ion-icon>
+              Share
+            </button>
+          </ion-col>
+        </ion-row>
+      </ion-card>
+      <br>
+    </ion-list>
 
 </ion-content>
