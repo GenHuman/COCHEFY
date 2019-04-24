@@ -41,8 +41,8 @@ export class AnunciosArrendadorPage {
             return changes.filter (c => {
                 let anuncio = c.payload.val()
                 if (anuncio.alquilado) {
-                    return true;
-                } else return false;
+                    return false;
+                } else return true;
             })
             .map(c => {
                  return {

@@ -46,7 +46,7 @@ export class NuevoAnuncioPage {
 		",distancia="+this.distancia+
 		",asegurado="+this.asegurado+
 		",cancelacion="+this.cancelacion);
-		var anuncio = {nombreUsuario: this.username,nPersonas:this.nPersonas, fSalida:this.fSalida, fRecogida:this.fRecogida, localizacion:"", distancia:this.distancia, asegurado:this.asegurado, cancelacion:this.cancelacion, alquilado:false}
+		var anuncio = {id:"", nombreUsuario: this.username,nPersonas:this.nPersonas, fSalida:this.fSalida, fRecogida:this.fRecogida, localizacion:"", distancia:this.distancia, asegurado:this.asegurado, cancelacion:this.cancelacion, alquilado:false}
 		//alert(anuncio);
 		this.anuncioService.addAnuncio(anuncio);
         this.navCtrl.setRoot(AnunciosPage);

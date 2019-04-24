@@ -10,7 +10,7 @@
 <ion-content padding>
   <div>
   <h2>Tus anuncios </h2>
-  <!-- <button style="float:right; margin-top: 3vh !important;;" ion-button round (click)="nuevoAnuncio()">Nuevo Anuncio</button> -->
+  <button style="float:right; margin-top: 3vh !important;;" ion-button round (click)="nuevoAnuncio()">Nuevo Anuncio</button>
   </div>
   <ion-list *ngFor="let anuncio of anuncios$ | async">
       <ion-card>
