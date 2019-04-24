@@ -8,7 +8,11 @@ page-login {
     }
 
     ion-content .scroll-content {
-        background-color: #FCFCFC;
+        background-color: #efefef;
         padding-bottom: 0 !important;
+    }
+
+    .toolbar-title {
+      color: #0a1525;
     }
 }
