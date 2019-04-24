@@ -21,16 +21,16 @@
         <ion-card-content>
             <ion-item>
 				<ion-icon name='people' item-left></ion-icon>
-			  <ion-input type="number" min="1" max="8" placeholder="Número de personas" [(ngModel)]="nPersonas" name="nPersonas"></ion-input>
+			  <ion-input type="number" min="1" max="8" placeholder="Número de personas" [(ngModel)]="nPersonas" name="nPersonas" id="personasInput"></ion-input>
             </ion-item>
 			
 			<ion-item>
 				<ion-icon name='calendar' item-left></ion-icon>
-			  <ion-datetime display-format="DD MM YYYY" min="{{today | date:'yyyy-MM-dd'}}" placeholder="Fecha comienzo" [(ngModel)]="fSalida" name="fSalida"></ion-datetime>
+			  <ion-datetime display-format="DD MM YYYY" min="{{today | date:'yyyy-MM-dd'}}" placeholder="Fecha salida" [(ngModel)]="fSalida" name="fSalida"></ion-datetime>
             </ion-item>
 			<ion-item>
 				<ion-icon name='calendar' item-left></ion-icon>
-			  <ion-datetime display-format="DD MM YYYY" min="{{today | date:'yyyy-MM-dd'}}" placeholder="Fecha fin" [(ngModel)]="fRecogida" name="fRecogida"></ion-datetime>
+			  <ion-datetime display-format="DD MM YYYY" min="{{today | date:'yyyy-MM-dd'}}" placeholder="Fecha llegada" [(ngModel)]="fRecogida" name="fRecogida"></ion-datetime>
             </ion-item>
             <!--<button ion-button clear color="dark" icon-start>
               <ion-icon name='calendar'></ion-icon>
@@ -42,11 +42,10 @@
 			  <ion-datetime display-format="DD MM YYYY" min="{{today | date:'yyyy-MM-dd'}}" placeholder="Fecha de fin"></ion-datetime>
 
             </button>-->
-			
-            <button ion-button clear color="dark" icon-start>
-              <ion-icon name='pin'></ion-icon>
-              #Location
-            </button>
+			<ion-item>
+				<ion-icon name='pin' item-left></ion-icon>
+			  <ion-input type="test" placeholder="Localización" [(ngModel)]="localizacion" name="localizacion"></ion-input>
+            </ion-item>
 			<ion-item>
 				<ion-icon name='car' item-left></ion-icon>
 			  <ion-input type="number" min="1" placeholder="Distancia en Km" [(ngModel)]="distancia" name="distancia"></ion-input>
