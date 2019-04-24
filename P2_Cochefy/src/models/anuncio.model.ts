@@ -6,7 +6,7 @@ export interface Anuncio {
  fRecogida: string;
  localizacion: string;
  distancia: number;
- asegurado: string;
- cancelacion: string;
- alquilado: string;
+ asegurado: boolean;
+ cancelacion: boolean;
+ alquilado: boolean;
 }
