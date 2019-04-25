@@ -2,6 +2,8 @@ import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams, MenuController } from 'ionic-angular';
 import { AnuncioService } from '../../services/anuncio.service';
 import { Anuncio } from '../../models/anuncio.model';
+import { Oferta } from '../../models/oferta.model';
+import { OfertaService } from '../../services/oferta.service';
 import { Observable } from 'rxjs';
 
 /**
@@ -21,8 +23,10 @@ export class MisReservasPage {
     username:string;
 
     anuncios$: Observable<Anuncio[]>;
+	ofertas$: Observable<Oferta[]>;
+	reservasAntiguas: Array<Anuncio> = [];
 
-    constructor(public navCtrl: NavController, public navParams: NavParams, public menuCtrl: MenuController, private AnuncioService: AnuncioService) {
+    constructor(public navCtrl: NavController, public navParams: NavParams, public menuCtrl: MenuController, private OfertaService: OfertaService, private AnuncioService: AnuncioService) {
       this.username = JSON.parse(window.localStorage.getItem("username"));
     }
 
@@ -38,10 +42,22 @@ export class MisReservasPage {
       .map(
         changes => {
           return changes.filter (c => {
-              let anuncio = c.payload.val()
+              let anuncio = c.payload.val();
+			  var hoy = new Date();
+			  var fechaAnuncio = new Date(anuncio.fRecogida+"T00:00:00");
               if (anuncio.nombreUsuario == this.username && anuncio.alquilado) {
-                  return true;
-              } else return false;
+                  if(hoy<fechaAnuncio){
+						return true;
+					}else{
+						if(document.getElementById("mostrarReservasAntiguasBtn").style.display == "none"){
+							document.getElementById("mostrarReservasAntiguasBtn").style.display = "block";
+						}
+						this.reservasAntiguas.push(anuncio);
+						return false;
+					}
+                } else {
+					return false;
+				}
           })
           .map(c => {
                return {
@@ -49,10 +65,38 @@ export class MisReservasPage {
                }
            });
         });
+		
+		this.ofertas$ = this.OfertaService
+        .getOfertas().snapshotChanges() //cambios
+        .map(
+          changes => {
+            return changes.filter (c => {
+                
+                    return true;
+
+            })
+            .map(c => {
+                 return {
+                      ...c.payload.val()
+                 }
+             });
+          });
  }
 
- verReserva(){
-     alert("Reserva!!")
- }
+	 verReserva(idAnuncio: string){
+		 document.getElementById("idAnuncio").style.display = "block";
+	 }
+ 
+ 	mostrarReservasAntiguas(){
+		document.getElementById("mostrarReservasAntiguasBtn").style.display = "none";
+		document.getElementById("ocultarReservasAntiguasBtn").style.display = "block";
+		document.getElementById("reservasAntiguas").style.display = "block";
+	}
+	
+	ocultarReservasAntiguas(){
+		document.getElementById("mostrarReservasAntiguasBtn").style.display = "block";
+		document.getElementById("ocultarReservasAntiguasBtn").style.display = "none";
+		document.getElementById("reservasAntiguas").style.display = "none";
+	}
 
 }
