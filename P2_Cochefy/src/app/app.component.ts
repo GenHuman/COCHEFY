@@ -4,6 +4,7 @@ import { StatusBar } from '@ionic-native/status-bar';
 import { SplashScreen } from '@ionic-native/splash-screen';
 
 import { AcercaDePage } from '../pages/acerca-de/acerca-de';
+import { AcercaDeArrendadorPage } from '../pages/acerca-de-arrendador/acerca-de-arrendador';
 import { AnunciosPage } from '../pages/anuncios/anuncios';
 import { LoginPage } from '../pages/login/login';
 import { MisReservasPage } from '../pages/mis-reservas/mis-reservas';
@@ -39,7 +40,7 @@ export class MyApp {
     this.pagesArrendador = [
         { title: 'Anuncios', component: AnunciosArrendadorPage },
         { title: 'Mis Alquileres', component: MisAlquileresPage},
-        { title: 'Acerca de', component: AcercaDePage},
+        { title: 'Acerca de', component: AcercaDeArrendadorPage},
         { title: 'Log Out', component: LoginPage}
     ];
 
