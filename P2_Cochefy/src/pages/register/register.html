@@ -17,28 +17,23 @@
  <form (ngSubmit)="register(f.value)" #f="ngForm">
   <ion-list>
     <ion-item>
-      <ion-input placeholder="Username" [(ngModel)]="username" name="username"></ion-input>
+      <ion-input placeholder="Nombre de usuario" [(ngModel)]="username" name="username"></ion-input>
     </ion-item>
     <ion-item>
-      <ion-input placeholder="Password" [(ngModel)]="password" type="password" name="password"></ion-input>
+      <ion-input placeholder="Contraseña" [(ngModel)]="password" type="password" name="password"></ion-input>
     </ion-item>
     <ion-item>
-      <ion-input placeholder="Repeat Password" [(ngModel)]="repassword" type="password" name="password"></ion-input>
+      <ion-input placeholder="Repite Contraseña" [(ngModel)]="repassword" type="password" name="password"></ion-input>
     </ion-item>
     <ion-item id="select-input">
-      <ion-label>Type of User</ion-label>
-      <ion-select placeholder="Select" [(ngModel)]="userType" name="userType">
-        <ion-option value="lessor">Lessor</ion-option>
-        <ion-option value="company">Company</ion-option>
+      <ion-label>Tipo de Usuario</ion-label>
+      <ion-select placeholder="Selecciona" [(ngModel)]="userType" name="userType">
+        <ion-option value="lessor">Cliente</ion-option>
+        <ion-option value="company">Empresa</ion-option>
       </ion-select>
     </ion-item>
   </ion-list>
 
- <button ion-button block type="submit" [disabled]="!f.valid">Register</button>
+ <button ion-button block type="submit" [disabled]="!f.valid">Regístrate!</button>
  </form>
- <ion-list>
-      <button ion-item *ngFor="let contact of users$ | async">
-		<p><strong>Nombree: </strong>{{contact.username}}</p>
-	  </button>
-  </ion-list>
 </ion-content>

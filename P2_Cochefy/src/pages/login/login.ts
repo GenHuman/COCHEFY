@@ -5,6 +5,7 @@ import { AnunciosPage } from '../anuncios/anuncios';
 import { UserService } from '../../services/user.service';
 import { User } from '../../models/user.model';
 import { AnunciosArrendadorPage } from '../anuncios-arrendador/anuncios-arrendador';
+import { NotifierService } from 'angular-notifier';
 
 @Component({
   selector: 'page-login',
@@ -18,7 +19,7 @@ export class LoginPage {
 
   userList: Array<User> = [];
 
-  constructor(public navCtrl: NavController, private UserService: UserService) {
+  constructor(public navCtrl: NavController, private UserService: UserService, private notifier: NotifierService) {
 
     this.UserService
       .getUsers().valueChanges()
@@ -32,7 +33,7 @@ export class LoginPage {
 
   login() {
     if (!this.username || !this.password) {
-      alert("Please fill all fields");
+      this.notifier.notify( 'error', "Por favor, rellena todos los campos" );
     } else {
       var isCorrect = false;
       var exists = false;
@@ -53,10 +54,10 @@ export class LoginPage {
         }
       });
       if (!exists) {
-        alert("That username does not exist");
+          this.notifier.notify( 'error', "El nombre de usuario no existe" );
       }
       if (!isCorrect && exists) {
-        alert("Wrong password");
+        this.notifier.notify( 'error', "Contraseña incorrecta" );
       }
     }
   }

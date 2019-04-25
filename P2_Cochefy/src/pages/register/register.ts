@@ -3,6 +3,7 @@ import { IonicPage, NavController, NavParams } from 'ionic-angular';
 import { LoginPage } from '../login/login';
 import { User } from '../../models/user.model';
 import { UserService } from '../../services/user.service';
+import { NotifierService } from 'angular-notifier';
 
 /**
  * Generated class for the RegisterPage page.
@@ -22,15 +23,15 @@ export class RegisterPage {
   password:string;
   repassword:string;
   userType:string;
-  
+
   userList: Array<User> = [];
-  
-  
-  constructor(public navCtrl: NavController, public navParams: NavParams, private UserService:UserService) {
-  
-  
+
+
+  constructor(public navCtrl: NavController, public navParams: NavParams, private UserService:UserService, private notifier: NotifierService) {
+
+
 	this.UserService
-    .getUsers().valueChanges() 
+    .getUsers().valueChanges()
 	 .subscribe(userList => {
 				//userList = userList;
                 console.log(userList);
@@ -40,43 +41,17 @@ export class RegisterPage {
                    console.log(item.username);
                 });
             });
-	 
+
 
   }
 
-  ionViewDidLoad() {
-    console.log('ionViewDidLoad RegisterPage');
-  }
-  
-  ngOnInit()
- {
-	 /*this.UserService
-    .getUsers().valueChanges() //cambios
-	 .subscribe(userList => {
-				//userList = userList;
-                console.log(userList);
-                userList.forEach((item) => {
-                   console.log(item.username);
-                });
-            });*/
-    /*.map(
-      changes => {
-		  
-        return changes.map(c=> ({
-          key: c.payload.key, ...c.payload.val()
-        }));
-      }); 
-   
-	alert(userList);*/
- }
-
-	register(value: {username:string,password:string,userType:string}) {  
+	register(value: {username:string,password:string,userType:string}) {
 
 		var usernameInUse = false;
 		if (!this.username || !this.password || !this.repassword || !this.userType){
-			alert ("Please fill all fields");
+          this.notifier.notify( 'error', "Por favor, rellena todos los campos" );
 		} else if (this.password != this.repassword){
-			alert ("The two passwords must be the same");
+          this.notifier.notify( 'error', "Las contraseñas deben ser iguales" );
 		} else {
 			//alert(this.userList);
 			this.userList.forEach((item) => {
@@ -85,21 +60,22 @@ export class RegisterPage {
 					console.log(item.username == this.username);
 					if(item.username == this.username){
 						usernameInUse = true;
-						console.log("existe");
-						alert ("That username is already in use");
+                          this.notifier.notify( 'error', "Ese nombre de usuario ya existe" );
 					}
 				}
 			});
 			if(!usernameInUse){
 				 if (this.userType=="company"){
 					  this.UserService.addUser(value);
+                      this.notifier.notify( 'success', "Registro completado! Bienvenido!" );
 					  this.navCtrl.push(LoginPage);
 				} else {
 					this.UserService.addUser(value);
+                    this.notifier.notify( 'success', "Registro completado! Bienvenido!" );
 					this.navCtrl.push(LoginPage);
 				}
 			}
-				
+
         }
 	}
 		  /*for(var user of this.users$){
@@ -109,9 +85,9 @@ export class RegisterPage {
 				usernameInUse = true;
 			}
 		  }*/
-		 
-      
 
-  
+
+
+
 
 }

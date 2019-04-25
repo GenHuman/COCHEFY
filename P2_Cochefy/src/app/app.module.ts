@@ -24,7 +24,7 @@ import { AngularFireDatabaseModule } from 'angularfire2/database';
 import { FirebaseDbProvider } from '../providers/firebase-db/firebase-db';
 import { FirebaseDbProviderUser } from '../providers/firebase-db/firebase-db-user';
 import { fireBaseConfig } from '../app/firebase.credentials';
-
+import { NotifierModule } from 'angular-notifier';
 
 @NgModule({
   declarations: [
@@ -44,7 +44,21 @@ import { fireBaseConfig } from '../app/firebase.credentials';
     BrowserModule,
     IonicModule.forRoot(MyApp),
 	AngularFireModule.initializeApp(fireBaseConfig),
-	AngularFireDatabaseModule
+	AngularFireDatabaseModule,
+    NotifierModule.withConfig( {
+      position: {
+          horizontal: {
+              position: "left"
+          },
+          vertical: {
+              position: "top",
+          }
+      },
+      behaviour: {
+          autoHide: 2500,
+          onClick: "hide",
+      }
+    } )
   ],
   bootstrap: [IonicApp],
   entryComponents: [
