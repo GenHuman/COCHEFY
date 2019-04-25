@@ -11,5 +11,44 @@
 </ion-header>
 
 <ion-content padding>
+    <div>
+        <h2>Ofertas por tu Anuncio</h2>
+    </div>
 
+    <ion-list *ngFor="let oferta of ofertas$ | async">
+        <ion-card>
+          <ion-card-header>
+            <ion-card-title><ion-icon name='home'></ion-icon>&nbsp;{{oferta.nombreEmpresa}}</ion-card-title>
+          </ion-card-header>
+
+          <ion-card-content>
+              <button ion-button clear color="dark" icon-start>
+                <ion-icon name='car'></ion-icon>
+                {{oferta.modeloCoche}}
+              </button>
+              <button ion-button clear color="dark" icon-start>
+                <ion-icon name='cash'></ion-icon>
+                {{oferta.precioDia}} &euro; / día
+              </button>
+              <button ion-button clear color="dark" icon-start>
+                <ion-icon name='navigate'></ion-icon>
+                {{oferta.lugarRecogida}}
+              </button>
+              <button ion-button clear color="dark" icon-start>
+                <ion-icon name='clipboard'></ion-icon>
+                {{oferta.Seguro}}
+              </button>
+              <button ion-button clear color="dark" icon-start>
+                <ion-icon name='remove-circle'></ion-icon>
+                {{oferta.Cancelacion}}
+              </button>
+          </ion-card-content>
+          <ion-row>
+              <ion-col text-center>
+                      <button ion-button round (click)="aceptarOferta()">Aceptar Oferta</button>
+              </ion-col>
+          </ion-row>
+        </ion-card>
+        <br>
+      </ion-list>
 </ion-content>

@@ -50,13 +50,22 @@
       <ion-input type="text"placeholder="Lugar de Recogida" [(ngModel)]="lugarRecogida" name="lugarRecogida"></ion-input>
     </ion-item>
 
-    <!-- <ion-item class="select-input">
-      <ion-label>Type of User</ion-label>
-      <ion-select placeholder="Select" [(ngModel)]="userType" name="userType">
-        <ion-option value="lessor">Lessor</ion-option>
-        <ion-option value="company">Company</ion-option>
+    <ion-item class="select-input">
+      <ion-label>Seguro</ion-label>
+      <ion-select placeholder="Select" [(ngModel)]="tipo_seguro" name="tipo_seguro">
+        <ion-option value="Seguro a todo riesgo">A todo riesgo</ion-option>
+        <ion-option value="Seguro a terceros">A terceros</ion-option>
+        <ion-option value="Sin seguro">Sin seguro</ion-option>
       </ion-select>
-    </ion-item> -->
+    </ion-item>
+    <ion-item class="select-input">
+      <ion-label>Cancelacion</ion-label>
+      <ion-select placeholder="Select" [(ngModel)]="tipo_cancelacion" name="tipo_cancelacion">
+        <ion-option value="Cancelación: hasta 1 semana antes">Hasta 1 semana antes</ion-option>
+        <ion-option value="Cancelación: hasta 1 semana antes">Hasta 24 horas antes</ion-option>
+        <ion-option value="Sin cancelación">Sin cancelación</ion-option>
+      </ion-select>
+    </ion-item>
     <br/>
     <ion-row>
         <ion-col text-center>

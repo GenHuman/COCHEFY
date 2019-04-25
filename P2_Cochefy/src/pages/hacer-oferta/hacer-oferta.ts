@@ -4,6 +4,7 @@ import { Anuncio } from '../../models/anuncio.model';
 import { AnuncioService } from '../../services/anuncio.service';
 import { Oferta } from '../../models/oferta.model';
 import { OfertaService } from '../../services/oferta.service';
+import { AnunciosArrendadorPage } from '../anuncios-arrendador/anuncios-arrendador';
 
 /**
  * Generated class for the HacerOfertaPage page.
@@ -19,49 +20,66 @@ import { OfertaService } from '../../services/oferta.service';
 })
 export class HacerOfertaPage {
 
-    username:string;
-    idAnuncio:string;
-    public anuncio:any;
-    public nPersonas:number;
-    public fSalida:string;
-    public fRecogida:string;
-    public localizacion:string;
-    public distancia:number;
+  username: string;
+  idAnuncio: string;
+  public anuncio: any;
+  public nPersonas: number;
+  public fSalida: string;
+  public fRecogida: string;
+  public localizacion: string;
+  public distancia: number;
 
-	modelo: number;
-	precio_dia: number;
-	lugarRecogida: string;
-	tipo_seguro: string;
-	tipo_cancelacion: string;
+  modelo: number;
+  precio_dia: number;
+  lugarRecogida: string;
+  tipo_seguro: string;
+  tipo_cancelacion: string;
 
-    constructor(public navCtrl: NavController, public navParams: NavParams, public menuCtrl: MenuController, private AnuncioService: AnuncioService, private OfertaService: OfertaService) {
-      this.username = JSON.parse(window.localStorage.getItem("username"));
-      this.idAnuncio = this.navParams.get('anuncioId');
+  constructor(public navCtrl: NavController, public navParams: NavParams, public menuCtrl: MenuController, private AnuncioService: AnuncioService, private OfertaService: OfertaService) {
+    this.username = JSON.parse(window.localStorage.getItem("username"));
+    this.idAnuncio = this.navParams.get('idAnuncio');
 
-      this.AnuncioService
-        .getAnuncios().valueChanges()
-        .subscribe(anuncioList => {
-          anuncioList.forEach((item) => {
-            if (item.id == this.idAnuncio){
-                this.anuncio= item;
-                return;
-            }
-          });
+    this.AnuncioService
+      .getAnuncios().valueChanges()
+      .subscribe(anuncioList => {
+        anuncioList.forEach((item) => {
+          if (item.id == this.idAnuncio) {
+            this.anuncio = item;
+            return;
+          }
         });
+      });
+  }
+
+  ionViewDidLoad() {
+    this.menuCtrl.enable(true, 'arrendadorMenu');
+    this.menuCtrl.enable(false, 'arrendatarioMenu');
+  }
+
+  ionViewDidEnter() {
+    this.nPersonas = this.anuncio.nPersonas;
+    this.fSalida = this.anuncio.fSalida;
+    this.fRecogida = this.anuncio.fRecogida;
+    this.localizacion = this.anuncio.localizacion;
+    this.distancia = this.anuncio.distancia;
+  }
+
+  confirmarOferta() {
+    if (!this.modelo || !this.precio_dia || !this.lugarRecogida || !this.tipo_seguro || !this.tipo_cancelacion) {
+      alert("Por favor, rellena todos los datos");
+    } else {
+      var oferta = {
+           idAnuncio: this.idAnuncio,
+           nombreEmpresa: this.username,
+           modeloCoche: this.modelo,
+           precioDia: this.precio_dia,
+           Seguro: this.tipo_seguro,
+           Cancelacion: this.tipo_cancelacion,
+           lugarRecogida: this.lugarRecogida,
+       };
+      this.OfertaService.addOferta(oferta);
+      this.navCtrl.setRoot(AnunciosArrendadorPage);
     }
-
-      ionViewDidLoad() {
-          this.menuCtrl.enable(true, 'arrendadorMenu');
-          this.menuCtrl.enable(false, 'arrendatarioMenu');
-      }
-
-      ionViewDidEnter()
-     {
-         this.nPersonas = this.anuncio.nPersonas;
-         this.fSalida = this.anuncio.fSalida;
-         this.fRecogida = this.anuncio.fRecogida;
-         this.localizacion = this.anuncio.localizacion;
-         this.distancia = this.anuncio.distancia;
-     }
+  }
 
 }

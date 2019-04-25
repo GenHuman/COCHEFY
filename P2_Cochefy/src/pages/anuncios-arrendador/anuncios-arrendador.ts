@@ -54,7 +54,7 @@ export class AnunciosArrendadorPage {
 
    hacerOferta (id) {
        this.navCtrl.push(HacerOfertaPage, {
-           anuncioId: id
+           idAnuncio: id
        });
    }
 

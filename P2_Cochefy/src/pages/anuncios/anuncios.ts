@@ -51,7 +51,7 @@ export class AnunciosPage {
 
     verOfertas (id) {
         this.navCtrl.push(OfertasPage, {
-            anuncioId: id
+            idAnuncio: id
         });
     }
 

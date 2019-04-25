@@ -5,13 +5,15 @@ import { Oferta } from "../models/oferta.model";
 @Injectable()
 export class OfertaService{
 
-    private ofertasRef=this.db.list<Oferta>('AgendaFirebase');
+    private ofertasRef=this.db.list<Oferta>('OfertaFirebase');
 
 
     constructor(private db:AngularFireDatabase){}
 
     addOferta(value: Oferta){
-       return this.ofertasRef.push(value);
+       var ref = this.ofertasRef.push(value);
+       value.id = ref.key;
+       return this.updateOferta(value);
     }
 
     getOfertas(){

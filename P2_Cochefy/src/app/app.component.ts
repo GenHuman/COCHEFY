@@ -18,7 +18,7 @@ import 'rxjs/add/operator/map'
 export class MyApp {
   @ViewChild(Nav) nav: Nav;
 
-  rootPage: any = AnunciosArrendadorPage;
+  rootPage: any = AnunciosPage;
 
   pagesArrendador: Array<{title: string, component: any}>;
   pagesArrendatario: Array<{title: string, component: any}>;
