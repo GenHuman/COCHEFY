@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams, MenuController } from 'ionic-angular';
 import { Oferta } from '../../models/oferta.model';
 import { OfertaService } from '../../services/oferta.service';
+import { Anuncio } from '../../models/anuncio.model';
 import { AnuncioService } from '../../services/anuncio.service';
 import { Observable } from 'rxjs';
 import 'rxjs/add/operator/map';
@@ -72,7 +73,7 @@ export class OfertasPage {
 	   
 	   
 
-		this.AnuncioService.confirmarOferta(idOferta,this.idAnuncio);
+		this.anuncioService.confirmarOferta(idOferta,this.idAnuncio);
    }
    
 
