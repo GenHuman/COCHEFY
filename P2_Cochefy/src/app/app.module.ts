@@ -5,6 +5,7 @@ import { MyApp } from './app.component';
 import { AnunciosPage } from '../pages/anuncios/anuncios';
 import { LoginPage } from '../pages/login/login';
 import { AcercaDePage } from '../pages/acerca-de/acerca-de';
+import { AcercaDeArrendadorPage } from '../pages/acerca-de-arrendador/acerca-de-arrendador';
 import { RegisterPage } from '../pages/register/register';
 import { OfertasPage } from '../pages/ofertas/ofertas';
 import { NuevoAnuncioPage } from '../pages/nuevo-anuncio/nuevo-anuncio';
@@ -69,7 +70,7 @@ import { fireBaseConfig } from '../app/firebase.credentials';
     ReservaService,
 	UserService,
     FirebaseDbProvider
-	
+
   ]
 })
 export class AppModule { }
