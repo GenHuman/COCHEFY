@@ -9,4 +9,5 @@ export interface Anuncio {
  asegurado: boolean;
  cancelacion: boolean;
  alquilado: boolean;
+ idOfertaAceptada: string;
 }

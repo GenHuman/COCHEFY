@@ -29,7 +29,7 @@ export class HacerOfertaPage {
   public localizacion: string;
   public distancia: number;
 
-  modelo: number;
+  modelo: string;
   precio_dia: number;
   lugarRecogida: string;
   tipo_seguro: string;

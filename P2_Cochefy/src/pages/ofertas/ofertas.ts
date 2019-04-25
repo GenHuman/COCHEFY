@@ -2,7 +2,9 @@ import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams, MenuController } from 'ionic-angular';
 import { Oferta } from '../../models/oferta.model';
 import { OfertaService } from '../../services/oferta.service';
+import { AnuncioService } from '../../services/anuncio.service';
 import { Observable } from 'rxjs';
+import 'rxjs/add/operator/map';
 
 /**
  * Generated class for the OfertasPage page.
@@ -22,10 +24,22 @@ export class OfertasPage {
     idAnuncio:string;
 
     ofertas$: Observable<Oferta[]>;
-
-    constructor(public navCtrl: NavController, public navParams: NavParams, public menuCtrl: MenuController, private OfertaService: OfertaService) {
+	anuncioList: Array<Anuncio> = [];
+	
+    constructor(public navCtrl: NavController, public navParams: NavParams, public menuCtrl: MenuController, private OfertaService: OfertaService,  private anuncioService: AnuncioService) {
       this.username = JSON.parse(window.localStorage.getItem("username"));
       this.idAnuncio = this.navParams.get('idAnuncio');
+	  
+	  	this.anuncioService.getAnuncios.valueChanges() 
+	 .subscribe(anuncioList => {
+				
+                console.log(anuncioList);
+                anuncioList.forEach((item) => {
+					this.anuncioList.push(item);
+					console.log(this.anuncioList);
+                });
+            });
+	  
     }
 
   ionViewDidLoad() {
@@ -54,5 +68,12 @@ export class OfertasPage {
           });
    }
 
+   aceptarOferta(idOferta: string){
+	   
+	   
+
+		this.AnuncioService.confirmarOferta(idOferta,this.idAnuncio);
+   }
+   
 
 }

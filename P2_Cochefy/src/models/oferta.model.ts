@@ -3,7 +3,7 @@ export interface Oferta {
  idAnuncio: string;
  nombreEmpresa: string;
  modeloCoche: string;
- precioDia: string;
+ precioDia: number;
  Seguro: string;
  Cancelacion: string;
  lugarRecogida: string;
