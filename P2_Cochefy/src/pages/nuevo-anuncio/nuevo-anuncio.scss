@@ -1,17 +1,14 @@
-page-anuncios {
+page-nuevo-anuncios {
     h2 {
-        margin-top: 3vh !important;
-        margin-bottom: 3vh !important;
+        margin-top: 6vh !important;
+        margin-bottom: 6vh !important;
     }
 
-    .fav-icon {
-        color: #e0b500 !important;
+    ion-content .scroll-content {
+        background-color: #FCFCFC;
+        padding-bottom: 0 !important;
     }
-
-    .save-icon {
-        color: #222 !important;
-    }
-	
+    
 	.show{
 		backgroundColor: "red";
 	}

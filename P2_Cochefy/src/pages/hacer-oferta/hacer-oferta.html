@@ -11,5 +11,56 @@
 </ion-header>
 
 <ion-content padding>
+    <div>
+        <h2 style="float:left;">Hacer Oferta</h2>
+    </div>
 
+    <ion-item>
+      <ion-icon name='people' item-left></ion-icon>
+      <ion-input type="number" [(ngModel)]="nPersonas" readonly name="nPersonas"></ion-input>
+    </ion-item>
+
+    <ion-item>
+        <ion-icon name='calendar' item-left></ion-icon>
+      <ion-datetime display-format="DD MM YYYY" [(ngModel)]="fSalida" readonly name="fSalida"></ion-datetime>
+    </ion-item>
+    <ion-item>
+        <ion-icon name='calendar' item-left></ion-icon>
+      <ion-datetime display-format="DD MM YYYY" [(ngModel)]="fRecogida" readonly name="fRecogida"></ion-datetime>
+    </ion-item>
+
+    <ion-item>
+        <ion-icon name='pin' item-left></ion-icon>
+        <ion-input type="text" [(ngModel)]="localizacion" readonly name="localizacion"></ion-input>
+    </ion-item>
+    <ion-item>
+        <ion-icon name=water item-left></ion-icon>
+      <ion-input type="number" [(ngModel)]="distancia" readonly name="distancia"></ion-input>
+    </ion-item>
+    <ion-item>
+        <ion-icon name='car' item-left></ion-icon>
+      <ion-input type="text" placeholder="Modelo de coche" [(ngModel)]="modelo" name="modelo"></ion-input>
+    </ion-item>
+    <ion-item>
+        <ion-icon name='cash' item-left></ion-icon>
+      <ion-input type="number" placeholder="Precio por dia" [(ngModel)]="precio_dia" name="precio_dia"></ion-input>
+    </ion-item>
+    <ion-item>
+        <ion-icon name='navigate' item-left></ion-icon>
+      <ion-input type="text"placeholder="Lugar de Recogida" [(ngModel)]="lugarRecogida" name="lugarRecogida"></ion-input>
+    </ion-item>
+
+    <!-- <ion-item class="select-input">
+      <ion-label>Type of User</ion-label>
+      <ion-select placeholder="Select" [(ngModel)]="userType" name="userType">
+        <ion-option value="lessor">Lessor</ion-option>
+        <ion-option value="company">Company</ion-option>
+      </ion-select>
+    </ion-item> -->
+    <br/>
+    <ion-row>
+        <ion-col text-center>
+            <button ion-button round (click)="confirmarOferta()">Hacer Oferta</button>
+        </ion-col>
+    </ion-row>
 </ion-content>

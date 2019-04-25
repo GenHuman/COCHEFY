@@ -16,6 +16,7 @@ export class NuevoAnuncioPage {
 
 	today = new Date();
 
+    localizacion: string;
 	nPersonas: number;
 	fSalida: string;
 	fRecogida: string;
@@ -38,10 +39,10 @@ export class NuevoAnuncioPage {
 		this.navCtrl.setRoot(AnunciosPage);
 	}
 
-	confirmarOferta () {
+	confirmarAnuncio () {
 		let date1 = new Date(this.fSalida+"T00:00:00");
 		let date2 = new Date(this.fRecogida+"T00:00:00");
-		if(date2 > date1){
+		if(date2 >= date1){
 			if(this.nPersonas!=undefined){
 			if(this.fSalida!=undefined){
 			if(this.fRecogida!=undefined){
@@ -79,7 +80,7 @@ export class NuevoAnuncioPage {
 				alert("Tienes que rellenar el número de personas.")
 			}
 
-			
+
 		}else{
 			alert("La fecha de recogida tiene que ser posterior a la fecha de salida.")
 		}

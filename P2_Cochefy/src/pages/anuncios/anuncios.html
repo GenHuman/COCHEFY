@@ -9,8 +9,8 @@
 
 <ion-content padding>
   <div>
-  <h2>Tus anuncios </h2>
-  <button style="float:right; margin-top: 3vh !important;;" ion-button round (click)="nuevoAnuncio()">Nuevo Anuncio</button>
+  <h2 style="float:left;">Tus anuncios </h2>
+  <button style="float:right; margin-top: 3vh !important;;" ion-button round outline icon-only (click)="nuevoAnuncio()"><ion-icon name="add"></ion-icon></button>
   </div>
   <ion-list *ngFor="let anuncio of anuncios$ | async">
       <ion-card>
@@ -32,7 +32,7 @@
               {{anuncio.localizacion}}
             </button>
             <button ion-button clear color="dark" icon-start>
-              <ion-icon name='car'></ion-icon>
+              <ion-icon name=water></ion-icon>
               {{anuncio.distancia}} km
             </button>
             <button ion-button clear color="dark" icon-start>
