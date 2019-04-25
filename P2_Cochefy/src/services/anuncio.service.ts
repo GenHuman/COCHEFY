@@ -27,4 +27,12 @@ export class AnuncioService{
     removeAnuncio(value: Anuncio){
 		return this.anunciosRef.remove(value.id);
     }
+	
+	confirmarOferta(idOferta:string,anuncio:Anuncio){
+		
+		anuncio.idOfertaAceptada = idOferta;
+		anuncio.alquilado = true;
+		return this.anunciosRef.update(anuncio.id,anuncio);
+		
+	}
 }

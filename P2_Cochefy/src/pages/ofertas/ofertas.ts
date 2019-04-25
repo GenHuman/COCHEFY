@@ -25,19 +25,20 @@ export class OfertasPage {
     idAnuncio:string;
 
     ofertas$: Observable<Oferta[]>;
-	anuncioList: Array<Anuncio> = [];
+	anuncio:Anuncio;
 	
     constructor(public navCtrl: NavController, public navParams: NavParams, public menuCtrl: MenuController, private OfertaService: OfertaService,  private anuncioService: AnuncioService) {
       this.username = JSON.parse(window.localStorage.getItem("username"));
       this.idAnuncio = this.navParams.get('idAnuncio');
 	  
-	  	this.anuncioService.getAnuncios.valueChanges() 
+	  	this.anuncioService.getAnuncios().valueChanges() 
 	 .subscribe(anuncioList => {
 				
                 console.log(anuncioList);
                 anuncioList.forEach((item) => {
-					this.anuncioList.push(item);
-					console.log(this.anuncioList);
+					if(item.id == this.idAnuncio){
+						this.anuncio = item;
+					}
                 });
             });
 	  
@@ -71,9 +72,7 @@ export class OfertasPage {
 
    aceptarOferta(idOferta: string){
 	   
-	   
-
-		this.anuncioService.confirmarOferta(idOferta,this.idAnuncio);
+		this.anuncioService.confirmarOferta(idOferta,this.anuncio);
    }
    
 
