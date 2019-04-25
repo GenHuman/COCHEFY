@@ -4,6 +4,7 @@ import { Oferta } from '../../models/oferta.model';
 import { OfertaService } from '../../services/oferta.service';
 import { Anuncio } from '../../models/anuncio.model';
 import { AnuncioService } from '../../services/anuncio.service';
+import { AnunciosPage } from '../anuncios/anuncios';
 import { Observable } from 'rxjs';
 import 'rxjs/add/operator/map';
 
@@ -73,6 +74,7 @@ export class OfertasPage {
    aceptarOferta(idOferta: string){
 
 		this.anuncioService.confirmarOferta(idOferta,this.anuncio);
+		this.navCtrl.setRoot(AnunciosPage);
    }
 
 

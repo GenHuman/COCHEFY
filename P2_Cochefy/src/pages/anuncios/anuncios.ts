@@ -15,7 +15,8 @@ export class AnunciosPage {
     username:string;
 
     anuncios$: Observable<Anuncio[]>;
-
+	anunciosAntiguos: Array<Anuncio> = [];
+	
     constructor(public navCtrl: NavController, public navParams: NavParams, public menuCtrl: MenuController, private AnuncioService: AnuncioService) {
       this.username = JSON.parse(window.localStorage.getItem("username"));
     }
@@ -27,10 +28,22 @@ export class AnunciosPage {
         .map(
           changes => {
             return changes.filter (c => {
-                let anuncio = c.payload.val()
+                let anuncio = c.payload.val();
+				var hoy = new Date();
+				var fechaAnuncio = new Date(anuncio.fSalida+"T00:00:00");
                 if (anuncio.nombreUsuario == this.username) {
-                    return true;
-                } else return false;
+					if(hoy<fechaAnuncio){
+						return true;
+					}else{
+						this.anunciosAntiguos.push(anuncio);
+						if(document.getElementById("ocultarAnunciosAntiguosBtn").style.display == "none"){
+							document.getElementById("mostrarAnunciosAntiguosBtn").style.display = "block";
+						}
+						return false;
+					}
+                } else {
+					return false;
+				}
             })
             .map(c => {
                  return {
@@ -54,5 +67,17 @@ export class AnunciosPage {
             idAnuncio: id
         });
     }
+	
+	mostrarAnunciosAntiguos(){
+		document.getElementById("mostrarAnunciosAntiguosBtn").style.display = "none";
+		document.getElementById("ocultarAnunciosAntiguosBtn").style.display = "block";
+		document.getElementById("anunciosAntiguos").style.display = "block";
+	}
+	
+	ocultarAnunciosAntiguos(){
+		document.getElementById("mostrarAnunciosAntiguosBtn").style.display = "block";
+		document.getElementById("ocultarAnunciosAntiguosBtn").style.display = "none";
+		document.getElementById("anunciosAntiguos").style.display = "none";
+	}
 
 }
