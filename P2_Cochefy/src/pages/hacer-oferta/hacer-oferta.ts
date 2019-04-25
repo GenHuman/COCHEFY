@@ -1,10 +1,9 @@
 import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams, MenuController } from 'ionic-angular';
-import { Anuncio } from '../../models/anuncio.model';
 import { AnuncioService } from '../../services/anuncio.service';
-import { Oferta } from '../../models/oferta.model';
 import { OfertaService } from '../../services/oferta.service';
 import { AnunciosArrendadorPage } from '../anuncios-arrendador/anuncios-arrendador';
+import { NotifierService } from 'angular-notifier';
 
 /**
  * Generated class for the HacerOfertaPage page.
@@ -35,7 +34,7 @@ export class HacerOfertaPage {
   tipo_seguro: string;
   tipo_cancelacion: string;
 
-  constructor(public navCtrl: NavController, public navParams: NavParams, public menuCtrl: MenuController, private AnuncioService: AnuncioService, private OfertaService: OfertaService) {
+  constructor(public navCtrl: NavController, public navParams: NavParams, public menuCtrl: MenuController, private notifier: NotifierService, private AnuncioService: AnuncioService, private OfertaService: OfertaService) {
     this.username = JSON.parse(window.localStorage.getItem("username"));
     this.idAnuncio = this.navParams.get('idAnuncio');
 
@@ -66,7 +65,7 @@ export class HacerOfertaPage {
 
   confirmarOferta() {
     if (!this.modelo || !this.precio_dia || !this.lugarRecogida || !this.tipo_seguro || !this.tipo_cancelacion) {
-      alert("Por favor, rellena todos los datos");
+      this.notifier.notify( 'error', "Por favor, rellena todos los campos" );
     } else {
       var oferta = {
            idAnuncio: this.idAnuncio,
@@ -78,6 +77,7 @@ export class HacerOfertaPage {
            lugarRecogida: this.lugarRecogida,
        };
       this.OfertaService.addOferta(oferta);
+      this.notifier.notify( 'success', "Oferta realizada!" );
       this.navCtrl.setRoot(AnunciosArrendadorPage);
     }
   }

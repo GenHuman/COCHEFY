@@ -22,7 +22,6 @@ import { UserService } from '../services/user.service';
 import { AngularFireModule } from 'angularfire2';
 import { AngularFireDatabaseModule } from 'angularfire2/database';
 import { FirebaseDbProvider } from '../providers/firebase-db/firebase-db';
-import { FirebaseDbProviderUser } from '../providers/firebase-db/firebase-db-user';
 import { fireBaseConfig } from '../app/firebase.credentials';
 import { NotifierModule } from 'angular-notifier';
 
@@ -36,6 +35,7 @@ import { NotifierModule } from 'angular-notifier';
     OfertasPage,
 	NuevoAnuncioPage,
     AcercaDePage,
+    AcercaDeArrendadorPage,
     MisAlquileresPage,
     AnunciosArrendadorPage,
     HacerOfertaPage
@@ -68,6 +68,7 @@ import { NotifierModule } from 'angular-notifier';
     LoginPage,
     RegisterPage,
     AcercaDePage,
+    AcercaDeArrendadorPage,
     MisReservasPage,
     OfertasPage,
     MisAlquileresPage,

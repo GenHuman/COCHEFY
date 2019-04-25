@@ -7,6 +7,7 @@ import { AnuncioService } from '../../services/anuncio.service';
 import { AnunciosPage } from '../anuncios/anuncios';
 import { Observable } from 'rxjs';
 import 'rxjs/add/operator/map';
+import { NotifierService } from 'angular-notifier';
 
 /**
  * Generated class for the OfertasPage page.
@@ -28,7 +29,7 @@ export class OfertasPage {
     ofertas$: Observable<Oferta[]>;
 	anuncio:Anuncio;
 
-    constructor(public navCtrl: NavController, public navParams: NavParams, public menuCtrl: MenuController, private OfertaService: OfertaService,  private anuncioService: AnuncioService) {
+    constructor(public navCtrl: NavController, public navParams: NavParams, public menuCtrl: MenuController, private notifier: NotifierService, private OfertaService: OfertaService,  private anuncioService: AnuncioService) {
       this.username = JSON.parse(window.localStorage.getItem("username"));
       this.idAnuncio = this.navParams.get('idAnuncio');
 
@@ -74,6 +75,7 @@ export class OfertasPage {
    aceptarOferta(idOferta: string){
 
 		this.anuncioService.confirmarOferta(idOferta,this.anuncio);
+        this.notifier.notify( 'success', "Oferta aceptada! Disfruta del alquiler!" );
 		this.navCtrl.setRoot(AnunciosPage);
    }
 
