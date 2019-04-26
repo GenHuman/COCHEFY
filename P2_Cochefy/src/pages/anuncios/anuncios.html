@@ -57,7 +57,7 @@
         <ion-row>
             <ion-col text-center>
                 <span *ngIf="anuncio.alquilado">
-                      <h4 ion-text color="danger">Reservado!</h4>
+                      <h4 ion-text color="danger">¡RESERVADO!</h4>
                 </span>
                 <span *ngIf="!anuncio.alquilado">
                     <button ion-button round (click)="verOfertas(anuncio.id)">Ver Ofertas</button>
@@ -134,7 +134,7 @@
         <ion-row>
             <ion-col text-center>
                 <span *ngIf="anuncio.alquilado">
-                      <h4 ion-text color="danger">Reservado!</h4>
+                      <h4 ion-text color="danger">¡RESERVADO!</h4>
                 </span>
                 <span *ngIf="!anuncio.alquilado">
                     <button ion-button round (click)="verOfertas(anuncio.id)">Ver Ofertas</button>
