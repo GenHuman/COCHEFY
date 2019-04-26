@@ -19,7 +19,7 @@ import 'rxjs/add/operator/map'
 export class MyApp {
   @ViewChild(Nav) nav: Nav;
 
-  rootPage: any = MisAlquileresPage;
+  rootPage: any = LoginPage;
 
   pagesArrendador: Array<{title: string, component: any}>;
   pagesArrendatario: Array<{title: string, component: any}>;

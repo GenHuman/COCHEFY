@@ -1,6 +1,5 @@
 import { Component } from '@angular/core';
 import { NavController, NavParams, MenuController } from 'ionic-angular';
-import { Anuncio } from '../../models/anuncio.model';
 import { AnuncioService } from '../../services/anuncio.service';
 import { AnunciosPage } from '../anuncios/anuncios';
 import { NotifierService } from 'angular-notifier';
