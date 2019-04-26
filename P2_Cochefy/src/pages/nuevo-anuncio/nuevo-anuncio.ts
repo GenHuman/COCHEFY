@@ -56,7 +56,7 @@ export class NuevoAnuncioPage {
 				",asegurado="+this.asegurado+
 				",cancelacion="+this.cancelacion);
 				var anuncio = {id:"", nombreUsuario: this.username,nPersonas:this.nPersonas, fSalida:this.fSalida, fRecogida:this.fRecogida, localizacion:this.localizacion, distancia:this.distancia, asegurado:this.asegurado, cancelacion:this.cancelacion, alquilado:false, idOfertaAceptada:""}
-				this.notifier.notify( 'error', "Anuncio añadido!" );
+				this.notifier.notify( 'success', "¡ANUNCIO AÑADIDO!" );
 				this.anuncioService.addAnuncio(anuncio);
 				this.navCtrl.setRoot(AnunciosPage);
 			} else{
