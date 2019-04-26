@@ -7,4 +7,5 @@ export interface Oferta {
  Seguro: string;
  Cancelacion: string;
  lugarRecogida: string;
+ ofertaAceptada: boolean,
 }

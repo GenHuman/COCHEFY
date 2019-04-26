@@ -11,4 +11,14 @@ page-anuncios {
     .save-icon {
         color: #222 !important;
     }
+
+    h6 {
+        margin-top: 3vh !important;
+        margin-left: 2vh !important;
+        color: #666 !important;
+    }
+
+    .item-md.item-block .item-inner{
+        border-bottom: none !important;
+    }
 }

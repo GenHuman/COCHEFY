@@ -47,16 +47,8 @@ export class NuevoAnuncioPage {
             this.notifier.notify( 'error', "Por favor, rellena todos los campos" );
         } else {
             if(date2 >= date1){
-				console.log(
-				"nPersonas="+this.nPersonas+
-				",fSalida="+this.fSalida+
-				",fRecogida="+this.fRecogida+
-				",localizacion="+this.localizacion+
-				",distancia="+this.distancia+
-				",asegurado="+this.asegurado+
-				",cancelacion="+this.cancelacion);
 				var anuncio = {id:"", nombreUsuario: this.username,nPersonas:this.nPersonas, fSalida:this.fSalida, fRecogida:this.fRecogida, localizacion:this.localizacion, distancia:this.distancia, asegurado:this.asegurado, cancelacion:this.cancelacion, alquilado:false, idOfertaAceptada:""}
-				this.notifier.notify( 'success', "¡ANUNCIO AÑADIDO!" );
+				this.notifier.notify( 'success', "¡Anuncio añadido!" );
 				this.anuncioService.addAnuncio(anuncio);
 				this.navCtrl.setRoot(AnunciosPage);
 			} else{

@@ -59,10 +59,10 @@
               Cancelación
             </button>
         </ion-card-content>
-		
+
 		<ion-list *ngFor="let oferta of ofertas$ | async">
-			 <span *ngIf="oferta.idAnuncio == anuncio.id">
-			<ion-card id={{anuncio.id}}>			
+			 <span *ngIf="oferta.id == anuncio.idOfertaAceptada">
+			<ion-card id={{anuncio.id}}>
 			  <ion-card-header>
 				<ion-card-title><ion-icon name='home'></ion-icon>&nbsp;{{oferta.nombreEmpresa}}</ion-card-title>
 			  </ion-card-header>
@@ -91,7 +91,7 @@
 			  </ion-card-content>
 			  <ion-row>
 
-			  </ion-row>		  
+			  </ion-row>
         </ion-card>
 		</span>
 		</ion-list>
@@ -124,7 +124,7 @@
       </ion-card>
       <br>
     </ion-list>
-	
+
 	  <ion-list *ngFor="let anuncio of reservasAntiguas" id="reservasAntiguas" style="display:none;">
       <ion-card>
         <ion-card-header>
@@ -168,7 +168,7 @@
             </button>
 			<ion-list *ngFor="let oferta of ofertas$ | async">
 			 <span *ngIf="oferta.idAnuncio == anuncio.id">
-			<ion-card id="{{anuncio.id}}" >			
+			<ion-card id="{{anuncio.id}}" >
 			  <ion-card-header>
 				<ion-card-title><ion-icon name='home'></ion-icon>&nbsp;{{oferta.nombreEmpresa}}</ion-card-title>
 			  </ion-card-header>
@@ -195,11 +195,11 @@
 					{{oferta.Cancelacion}}
 				  </button>
 			  </ion-card-content>
-		  
+
         </ion-card>
 		</span>
       </ion-list>
-		
+
         </ion-card-content>
         <ion-row>
             <ion-col text-center>
@@ -230,8 +230,8 @@
       </ion-card>
       <br>
     </ion-list>
-	
-	
+
+
 	<ion-item>
 		<button style="float:right; margin-top: 3vh !important; display:none;" ion-button round (click)="mostrarReservasAntiguas()" id="mostrarReservasAntiguasBtn" >Mostrar reservas antiguas</button>
 		<button style="float:right; margin-top: 3vh !important; display:none;" ion-button round (click)="ocultarReservasAntiguas()" id="ocultarReservasAntiguasBtn" >Ocultar reservas antiguas</button>

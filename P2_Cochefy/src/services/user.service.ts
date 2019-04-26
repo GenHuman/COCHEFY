@@ -6,15 +6,6 @@ import { User } from "../models/user.model";
 export class UserService{
 
     private userRef=this.db.list<User>('UserFirebase');
-	/*const name$ = new Subject<string>();
-	const queryObservable = name$.pipe(
-	  switchMap(name => 
-		db.list('/UserFirebase', userRef => userRef.orderByChild('nombre').equalTo(name)).valueChanges()
-	  )
-	);
-	queryObservable.subscribe(queriedItems => {
-		console.log(queriedItems);  
-	});*/
 
     constructor(private db:AngularFireDatabase){}
 
@@ -25,7 +16,7 @@ export class UserService{
     getUsers(){
       return this.userRef;
     }
-	
+
 	getUserByName(name:string){
 		return this.db.list('/UserFirebase', ref => ref.orderByChild('username').equalTo(name));
 	}

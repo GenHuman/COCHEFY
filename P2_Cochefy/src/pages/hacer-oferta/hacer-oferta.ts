@@ -75,9 +75,10 @@ export class HacerOfertaPage {
            Seguro: this.tipo_seguro,
            Cancelacion: this.tipo_cancelacion,
            lugarRecogida: this.lugarRecogida,
+           ofertaAceptada: false,
        };
       this.OfertaService.addOferta(oferta);
-      this.notifier.notify( 'success', "¡OFERTA REALIZADA!" );
+      this.notifier.notify( 'success', "¡Oferta realizada!" );
       this.navCtrl.setRoot(AnunciosArrendadorPage);
     }
   }

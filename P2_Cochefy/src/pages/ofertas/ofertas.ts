@@ -35,8 +35,6 @@ export class OfertasPage {
 
 	  	this.anuncioService.getAnuncios().valueChanges()
 	 .subscribe(anuncioList => {
-
-                console.log(anuncioList);
                 anuncioList.forEach((item) => {
 					if(item.id == this.idAnuncio){
 						this.anuncio = item;
@@ -75,7 +73,16 @@ export class OfertasPage {
    aceptarOferta(idOferta: string){
 
 		this.anuncioService.confirmarOferta(idOferta,this.anuncio);
-        this.notifier.notify( 'success', "¡OFERTA ACEPTADA! DISFRUTA DEL ALQUILER" );
+        this.OfertaService.getOfertas().valueChanges()
+	       .subscribe(ofertaList => {
+                ofertaList.forEach((item) => {
+					if(item.id == idOferta){
+						item.ofertaAceptada = true;
+                        this.OfertaService.updateOferta(item);
+					}
+                });
+            });
+        this.notifier.notify( 'success', "¡Oferta aceptada! Disfruta del alquiler" );
 		this.navCtrl.setRoot(AnunciosPage);
    }
 

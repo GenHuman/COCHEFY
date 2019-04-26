@@ -19,8 +19,8 @@ export class AcercaDePage {
   }
 
   ionViewDidLoad() {
-    this.menuCtrl.enable(true, 'arrendadorMenu');
-    this.menuCtrl.enable(false, 'arrendatarioMenu');
+    this.menuCtrl.enable(false, 'arrendadorMenu');
+    this.menuCtrl.enable(true, 'arrendatarioMenu');
   }
 
 }

@@ -33,12 +33,8 @@ export class RegisterPage {
 	this.UserService
     .getUsers().valueChanges()
 	 .subscribe(userList => {
-				//userList = userList;
-                console.log(userList);
                 userList.forEach((item) => {
 					this.userList.push(item);
-					console.log(this.userList);
-                   console.log(item.username);
                 });
             });
 
@@ -56,8 +52,6 @@ export class RegisterPage {
 			//alert(this.userList);
 			this.userList.forEach((item) => {
 				if(!usernameInUse){
-					console.log(item.username);
-					console.log(item.username == this.username);
 					if(item.username == this.username){
 						usernameInUse = true;
                           this.notifier.notify( 'error', "Ese nombre de usuario ya existe" );

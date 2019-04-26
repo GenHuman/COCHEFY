@@ -10,7 +10,10 @@
 <ion-content padding>
   <div>
   <h2 style="float:left;">Tus anuncios </h2>
-  <button style="float:right; margin-top: 3vh !important;;" ion-button round outline icon-only (click)="nuevoAnuncio()"><ion-icon name="add"></ion-icon></button>
+  <button style="float:right; margin-top: 3vh !important;" ion-button round outline icon-only (click)="nuevoAnuncio()"><ion-icon name="add"></ion-icon></button>
+  </div>
+  <div style="clear: both;" *ngIf="(anuncios$ | async)?.length==0">
+      <h6 ion-text color="dark">No hay anuncios disponibles</h6>
   </div>
   <ion-list *ngFor="let anuncio of anuncios$ | async">
       <ion-card>
@@ -88,7 +91,7 @@
       </ion-card>
       <br>
     </ion-list>
-	
+
 	  <ion-list *ngFor="let anuncio of anunciosAntiguos" style="display:none;" id="anunciosAntiguos">
       <ion-card>
         <ion-card-header>
