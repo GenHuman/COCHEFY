@@ -75,7 +75,7 @@ export class OfertasPage {
    aceptarOferta(idOferta: string){
 
 		this.anuncioService.confirmarOferta(idOferta,this.anuncio);
-        this.notifier.notify( 'success', "Oferta aceptada! Disfruta del alquiler!" );
+        this.notifier.notify( 'success', "¡OFERTA ACEPTADA! DISFRUTA DEL ALQUILER" );
 		this.navCtrl.setRoot(AnunciosPage);
    }
 
