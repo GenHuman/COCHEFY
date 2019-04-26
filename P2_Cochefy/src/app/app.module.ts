@@ -17,7 +17,6 @@ import { StatusBar } from '@ionic-native/status-bar';
 import { SplashScreen } from '@ionic-native/splash-screen';
 import {AnuncioService} from '../services/anuncio.service';
 import {OfertaService} from '../services/oferta.service';
-import {ReservaService} from '../services/reserva.service';
 import { UserService } from '../services/user.service';
 import { AngularFireModule } from 'angularfire2';
 import { AngularFireDatabaseModule } from 'angularfire2/database';
@@ -82,7 +81,6 @@ import { NotifierModule } from 'angular-notifier';
     { provide: ErrorHandler, useClass: IonicErrorHandler },
     AnuncioService,
     OfertaService,
-    ReservaService,
 	UserService,
     FirebaseDbProvider
 

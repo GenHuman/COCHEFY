@@ -15,225 +15,210 @@
 
 <ion-content padding>
   <div>
-      <h2>Mis reservas</h2>
+    <h2>Mis reservas</h2>
+  </div>
+  <div style="clear: both;" *ngIf="(anuncios$ | async)?.length==0 && reservasAntiguas.length==0">
+      <h6 ion-text color="dark">No tienes reservas</h6>
   </div>
   <ion-list *ngFor="let anuncio of anuncios$ | async">
-      <ion-card>
-        <ion-card-header>
-          <ion-card-title><ion-icon name='person'></ion-icon>&nbsp;&nbsp;{{anuncio.nombreUsuario}}</ion-card-title>
-        </ion-card-header>
+    <ion-card>
+      <ion-card-header>
+        <ion-card-title>
+          <ion-icon name='person'></ion-icon>&nbsp;&nbsp;{{anuncio.nombreUsuario}}
+        </ion-card-title>
+      </ion-card-header>
 
-        <ion-card-content>
-            <button ion-button clear color="dark" icon-start>
-              <ion-icon name='calendar'></ion-icon>
-              {{anuncio.fSalida}} - {{anuncio.fRecogida}}
-            </button>
-            <button ion-button clear color="dark" icon-start>
-              <ion-icon name='people'></ion-icon>
-              {{anuncio.nPersonas}}
-            </button>
-            <button ion-button clear color="dark" icon-start>
-              <ion-icon name='pin'></ion-icon>
-              {{anuncio.localizacion}}
-            </button>
-            <button ion-button clear color="dark" icon-start>
-              <ion-icon name=water></ion-icon>
-              {{anuncio.distancia}} km
-            </button>
-            <button ion-button clear color="dark" icon-start>
-                <span *ngIf="anuncio.asegurado">
-                    <ion-icon name='checkmark'></ion-icon>
-                </span>
-                <span *ngIf="!anuncio.asegurado">
-                    <ion-icon name='close'></ion-icon>
-                </span>
-              Seguro
-            </button>
-            <button ion-button clear color="dark" icon-start>
-                <span *ngIf="anuncio.cancelacion">
-                    <ion-icon name='checkmark'></ion-icon>
-                </span>
-                <span *ngIf="!anuncio.cancelacion">
-                    <ion-icon name='close'></ion-icon>
-                </span>
-              Cancelación
-            </button>
-        </ion-card-content>
-
-		<ion-list *ngFor="let oferta of ofertas$ | async">
-			 <span *ngIf="oferta.id == anuncio.idOfertaAceptada">
-			<ion-card id={{anuncio.id}}>
-			  <ion-card-header>
-				<ion-card-title><ion-icon name='home'></ion-icon>&nbsp;{{oferta.nombreEmpresa}}</ion-card-title>
-			  </ion-card-header>
-
-			  <ion-card-content>
-				  <button ion-button clear color="dark" icon-start>
-					<ion-icon name='car'></ion-icon>
-					{{oferta.modeloCoche}}
-				  </button>
-				  <button ion-button clear color="dark" icon-start>
-					<ion-icon name='cash'></ion-icon>
-					{{oferta.precioDia}} &euro; / día
-				  </button>
-				  <button ion-button clear color="dark" icon-start>
-					<ion-icon name='navigate'></ion-icon>
-					{{oferta.lugarRecogida}}
-				  </button>
-				  <button ion-button clear color="dark" icon-start>
-					<ion-icon name='clipboard'></ion-icon>
-					{{oferta.Seguro}}
-				  </button>
-				  <button ion-button clear color="dark" icon-start>
-					<ion-icon name='remove-circle'></ion-icon>
-					{{oferta.Cancelacion}}
-				  </button>
-			  </ion-card-content>
-			  <ion-row>
-
-			  </ion-row>
-        </ion-card>
-		</span>
-		</ion-list>
-        <ion-row>
-            <ion-col text-center>
-                    <button ion-button round (click)="verReserva()">Ver Reserva</button>
-            </ion-col>
-        </ion-row>
-        <hr>
-        <ion-row no-padding>
-          <ion-col>
-            <button ion-button clear small class="fav-icon" icon-start>
-              <ion-icon name='star'></ion-icon>
-              Fav
-            </button>
-          </ion-col>
-          <ion-col>
-            <button ion-button clear small class="save-icon" icon-start>
-              <ion-icon name='text'></ion-icon>
-              Comenta
-            </button>
-          </ion-col>
-          <ion-col>
-            <button ion-button clear small icon-start>
-              <ion-icon name='share-alt'></ion-icon>
-              Share
-            </button>
-          </ion-col>
-        </ion-row>
-      </ion-card>
-      <br>
-    </ion-list>
-
-	  <ion-list *ngFor="let anuncio of reservasAntiguas" id="reservasAntiguas" style="display:none;">
-      <ion-card>
-        <ion-card-header>
-          <ion-card-title><ion-icon name='person'></ion-icon>&nbsp;{{anuncio.nombreUsuario}}</ion-card-title>
-        </ion-card-header>
-
-        <ion-card-content>
-            <button ion-button clear color="dark" icon-start>
-              <ion-icon name='calendar'></ion-icon>
-              {{anuncio.fSalida}} - {{anuncio.fRecogida}}
-            </button>
-            <button ion-button clear color="dark" icon-start>
-              <ion-icon name='people'></ion-icon>
-              {{anuncio.nPersonas}}
-            </button>
-            <button ion-button clear color="dark" icon-start>
-              <ion-icon name='pin'></ion-icon>
-              {{anuncio.localizacion}}
-            </button>
-            <button ion-button clear color="dark" icon-start>
-              <ion-icon name=water></ion-icon>
-              {{anuncio.distancia}} km
-            </button>
-            <button ion-button clear color="dark" icon-start>
-                <span *ngIf="anuncio.asegurado">
-                    <ion-icon name='checkmark'></ion-icon>
-                </span>
-                <span *ngIf="!anuncio.asegurado">
-                    <ion-icon name='close'></ion-icon>
-                </span>
-              Seguro
-            </button>
-            <button ion-button clear color="dark" icon-start>
-                <span *ngIf="anuncio.cancelacion">
-                    <ion-icon name='checkmark'></ion-icon>
-                </span>
-                <span *ngIf="!anuncio.cancelacion">
-                    <ion-icon name='close'></ion-icon>
-                </span>
-              Cancelación
-            </button>
-			<ion-list *ngFor="let oferta of ofertas$ | async">
-			 <span *ngIf="oferta.idAnuncio == anuncio.id">
-			<ion-card id="{{anuncio.id}}" >
-			  <ion-card-header>
-				<ion-card-title><ion-icon name='home'></ion-icon>&nbsp;{{oferta.nombreEmpresa}}</ion-card-title>
-			  </ion-card-header>
-
-			  <ion-card-content>
-				  <button ion-button clear color="dark" icon-start>
-					<ion-icon name='car'></ion-icon>
-					{{oferta.modeloCoche}}
-				  </button>
-				  <button ion-button clear color="dark" icon-start>
-					<ion-icon name='cash'></ion-icon>
-					{{oferta.precioDia}} &euro; / día
-				  </button>
-				  <button ion-button clear color="dark" icon-start>
-					<ion-icon name='navigate'></ion-icon>
-					{{oferta.lugarRecogida}}
-				  </button>
-				  <button ion-button clear color="dark" icon-start>
-					<ion-icon name='clipboard'></ion-icon>
-					{{oferta.Seguro}}
-				  </button>
-				  <button ion-button clear color="dark" icon-start>
-					<ion-icon name='remove-circle'></ion-icon>
-					{{oferta.Cancelacion}}
-				  </button>
-			  </ion-card-content>
-
-        </ion-card>
-		</span>
+      <ion-card-content>
+        <button ion-button clear color="dark" icon-start>
+          <ion-icon name='calendar'></ion-icon>
+          {{anuncio.fSalida}} - {{anuncio.fRecogida}}
+        </button>
+        <button ion-button clear color="dark" icon-start>
+          <ion-icon name='people'></ion-icon>
+          {{anuncio.nPersonas}}
+        </button>
+        <button ion-button clear color="dark" icon-start>
+          <ion-icon name='pin'></ion-icon>
+          {{anuncio.localizacion}}
+        </button>
+        <button ion-button clear color="dark" icon-start>
+          <ion-icon name=water></ion-icon>
+          {{anuncio.distancia}} km
+        </button>
+        <button ion-button clear color="dark" icon-start>
+          <span *ngIf="anuncio.asegurado">
+            <ion-icon name='checkmark'></ion-icon>
+          </span>
+          <span *ngIf="!anuncio.asegurado">
+            <ion-icon name='close'></ion-icon>
+          </span>
+          Seguro
+        </button>
+        <button ion-button clear color="dark" icon-start>
+          <span *ngIf="anuncio.cancelacion">
+            <ion-icon name='checkmark'></ion-icon>
+          </span>
+          <span *ngIf="!anuncio.cancelacion">
+            <ion-icon name='close'></ion-icon>
+          </span>
+          Cancelación
+        </button>
+      <ion-list *ngFor="let oferta of ofertas$ | async">
+        <span *ngIf="oferta.id == anuncio.idOfertaAceptada">
+          <button ion-button clear color="dark" icon-start>
+            <ion-icon name='home'></ion-icon>
+            {{oferta.nombreEmpresa}}
+          </button>
+          <button ion-button clear color="dark" icon-start>
+            <ion-icon name='car'></ion-icon>
+            {{oferta.modeloCoche}}
+          </button>
+          <button ion-button clear color="dark" icon-start>
+            <ion-icon name='cash'></ion-icon>
+            {{oferta.precioDia}} &euro; / día
+          </button>
+          <button ion-button clear color="dark" icon-start>
+            <ion-icon name='navigate'></ion-icon>
+            {{oferta.lugarRecogida}}
+          </button>
+          <button ion-button clear color="dark" icon-start>
+            <ion-icon name='clipboard'></ion-icon>
+            {{oferta.Seguro}}
+          </button>
+          <button ion-button clear color="dark" icon-start>
+            <ion-icon name='remove-circle'></ion-icon>
+            {{oferta.Cancelacion}}
+          </button>
+        </span>
       </ion-list>
 
-        </ion-card-content>
-        <ion-row>
-            <ion-col text-center>
-                    <button ion-button round (click)="verReserva(anuncio.id)">Ver Reserva</button>
-            </ion-col>
-        </ion-row>
-        <hr>
-        <ion-row no-padding>
-          <ion-col>
-            <button ion-button clear small class="fav-icon" icon-start>
-              <ion-icon name='star'></ion-icon>
-              Fav
-            </button>
-          </ion-col>
-          <ion-col>
-            <button ion-button clear small class="save-icon" icon-start>
-              <ion-icon name='text'></ion-icon>
-              Comenta
-            </button>
-          </ion-col>
-          <ion-col>
-            <button ion-button clear small icon-start>
-              <ion-icon name='share-alt'></ion-icon>
-              Share
-            </button>
-          </ion-col>
-        </ion-row>
-      </ion-card>
-      <br>
-    </ion-list>
+    </ion-card-content>
+      <hr>
+      <ion-row no-padding>
+        <ion-col>
+          <button ion-button clear small class="fav-icon" icon-start>
+            <ion-icon name='star'></ion-icon>
+            Fav
+          </button>
+        </ion-col>
+        <ion-col>
+          <button ion-button clear small class="comment-icon" icon-start>
+            <ion-icon name='text'></ion-icon>
+            Comenta
+          </button>
+        </ion-col>
+        <ion-col>
+          <button ion-button clear small icon-start>
+            <ion-icon name='share-alt'></ion-icon>
+            Share
+          </button>
+        </ion-col>
+      </ion-row>
+    </ion-card>
+    <br>
+  </ion-list>
+
+  <ion-list *ngFor="let anuncio of reservasAntiguas" id="reservasAntiguas" style="display:none;">
+    <ion-card>
+      <ion-card-header>
+        <ion-card-title>
+          <ion-icon name='person'></ion-icon>&nbsp;{{anuncio.nombreUsuario}}
+        </ion-card-title>
+      </ion-card-header>
+
+      <ion-card-content>
+        <button ion-button clear color="dark" icon-start>
+          <ion-icon name='calendar'></ion-icon>
+          {{anuncio.fSalida}} - {{anuncio.fRecogida}}
+        </button>
+        <button ion-button clear color="dark" icon-start>
+          <ion-icon name='people'></ion-icon>
+          {{anuncio.nPersonas}}
+        </button>
+        <button ion-button clear color="dark" icon-start>
+          <ion-icon name='pin'></ion-icon>
+          {{anuncio.localizacion}}
+        </button>
+        <button ion-button clear color="dark" icon-start>
+          <ion-icon name=water></ion-icon>
+          {{anuncio.distancia}} km
+        </button>
+        <button ion-button clear color="dark" icon-start>
+          <span *ngIf="anuncio.asegurado">
+            <ion-icon name='checkmark'></ion-icon>
+          </span>
+          <span *ngIf="!anuncio.asegurado">
+            <ion-icon name='close'></ion-icon>
+          </span>
+          Seguro
+        </button>
+        <button ion-button clear color="dark" icon-start>
+          <span *ngIf="anuncio.cancelacion">
+            <ion-icon name='checkmark'></ion-icon>
+          </span>
+          <span *ngIf="!anuncio.cancelacion">
+            <ion-icon name='close'></ion-icon>
+          </span>
+          Cancelación
+        </button>
+      <ion-list *ngFor="let oferta of ofertas$ | async">
+        <span *ngIf="oferta.id == anuncio.idOfertaAceptada">
+          <button ion-button clear color="dark" icon-start>
+            <ion-icon name='home'></ion-icon>
+            {{oferta.nombreEmpresa}}
+          </button>
+          <button ion-button clear color="dark" icon-start>
+            <ion-icon name='car'></ion-icon>
+            {{oferta.modeloCoche}}
+          </button>
+          <button ion-button clear color="dark" icon-start>
+            <ion-icon name='cash'></ion-icon>
+            {{oferta.precioDia}} &euro; / día
+          </button>
+          <button ion-button clear color="dark" icon-start>
+            <ion-icon name='navigate'></ion-icon>
+            {{oferta.lugarRecogida}}
+          </button>
+          <button ion-button clear color="dark" icon-start>
+            <ion-icon name='clipboard'></ion-icon>
+            {{oferta.Seguro}}
+          </button>
+          <button ion-button clear color="dark" icon-start>
+            <ion-icon name='remove-circle'></ion-icon>
+            {{oferta.Cancelacion}}
+          </button>
+        </span>
+      </ion-list>
+
+    </ion-card-content>
+      <hr>
+      <ion-row no-padding>
+        <ion-col>
+          <button ion-button clear small class="fav-icon" icon-start>
+            <ion-icon name='star'></ion-icon>
+            Fav
+          </button>
+        </ion-col>
+        <ion-col>
+          <button ion-button clear small class="comment-icon" icon-start>
+            <ion-icon name='text'></ion-icon>
+            Comenta
+          </button>
+        </ion-col>
+        <ion-col>
+          <button ion-button clear small icon-start>
+            <ion-icon name='share-alt'></ion-icon>
+            Share
+          </button>
+        </ion-col>
+      </ion-row>
+    </ion-card>
+    <br>
+  </ion-list>
 
 
-	<ion-item>
-		<button style="float:right; margin-top: 3vh !important; display:none;" ion-button round (click)="mostrarReservasAntiguas()" id="mostrarReservasAntiguasBtn" >Mostrar reservas antiguas</button>
-		<button style="float:right; margin-top: 3vh !important; display:none;" ion-button round (click)="ocultarReservasAntiguas()" id="ocultarReservasAntiguasBtn" >Ocultar reservas antiguas</button>
-	</ion-item>
+  <ion-item>
+    <button style="float:right; margin-top: 3vh !important; display:none;" ion-button round (click)="mostrarReservasAntiguas()" id="mostrarReservasAntiguasBtn">Mostrar reservas antiguas</button>
+    <button style="float:right; margin-top: 3vh !important; display:none;" ion-button round (click)="ocultarReservasAntiguas()" id="ocultarReservasAntiguasBtn">Ocultar reservas antiguas</button>
+  </ion-item>
 </ion-content>

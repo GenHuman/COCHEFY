@@ -65,13 +65,13 @@ export class MisReservasPage {
                }
            });
         });
-		
+
 		this.ofertas$ = this.OfertaService
         .getOfertas().snapshotChanges() //cambios
         .map(
           changes => {
             return changes.filter (c => {
-                
+
                     return true;
 
             })
@@ -82,17 +82,13 @@ export class MisReservasPage {
              });
           });
  }
-
-	 verReserva(idAnuncio: string){
-		 document.getElementById("idAnuncio").style.display = "block";
-	 }
  
  	mostrarReservasAntiguas(){
 		document.getElementById("mostrarReservasAntiguasBtn").style.display = "none";
 		document.getElementById("ocultarReservasAntiguasBtn").style.display = "block";
 		document.getElementById("reservasAntiguas").style.display = "block";
 	}
-	
+
 	ocultarReservasAntiguas(){
 		document.getElementById("mostrarReservasAntiguasBtn").style.display = "block";
 		document.getElementById("ocultarReservasAntiguasBtn").style.display = "none";

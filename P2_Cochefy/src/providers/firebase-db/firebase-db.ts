@@ -3,7 +3,6 @@ import { Injectable } from '@angular/core';
 import { AngularFireDatabase} from 'angularfire2/database';
 import {Anuncio} from '../../models/anuncio.model';
 import {Oferta} from '../../models/oferta.model';
-import {Reserva} from '../../models/reserva.model';
 
 /*
   Generated class for the FirebaseDbProvider provkeyer.
