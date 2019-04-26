@@ -77,7 +77,7 @@ export class HacerOfertaPage {
            lugarRecogida: this.lugarRecogida,
        };
       this.OfertaService.addOferta(oferta);
-      this.notifier.notify( 'success', "Oferta realizada!" );
+      this.notifier.notify( 'success', "¡OFERTA REALIZADA!" );
       this.navCtrl.setRoot(AnunciosArrendadorPage);
     }
   }
