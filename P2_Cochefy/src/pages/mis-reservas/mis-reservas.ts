@@ -44,9 +44,9 @@ export class MisReservasPage {
           return changes.filter (c => {
               let anuncio = c.payload.val();
 			  var hoy = new Date();
-			  var fechaAnuncio = new Date(anuncio.fRecogida+"T00:00:00");
+			  var fechaAnuncio = new Date(anuncio.fSalida+"T23:59:00");
               if (anuncio.nombreUsuario == this.username && anuncio.alquilado) {
-                  if(hoy<fechaAnuncio){
+                  if(hoy<=fechaAnuncio){
 						return true;
 					}else{
 						if(document.getElementById("mostrarReservasAntiguasBtn").style.display == "none"){
@@ -82,7 +82,7 @@ export class MisReservasPage {
              });
           });
  }
- 
+
  	mostrarReservasAntiguas(){
 		document.getElementById("mostrarReservasAntiguasBtn").style.display = "none";
 		document.getElementById("ocultarReservasAntiguasBtn").style.display = "block";

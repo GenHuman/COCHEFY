@@ -40,7 +40,9 @@ export class AnunciosArrendadorPage {
           changes => {
             return changes.filter (c => {
                 let anuncio = c.payload.val()
-                if (anuncio.alquilado) {
+                var hoy = new Date();
+				var fechaAnuncio = new Date(anuncio.fSalida+"T23:59:00");
+                if (anuncio.alquilado || hoy>fechaAnuncio) {
                     return false;
                 } else return true;
             })

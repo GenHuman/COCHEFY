@@ -16,7 +16,7 @@ export class AnunciosPage {
 
     anuncios$: Observable<Anuncio[]>;
 	anunciosAntiguos: Array<Anuncio> = [];
-	
+
     constructor(public navCtrl: NavController, public navParams: NavParams, public menuCtrl: MenuController, private AnuncioService: AnuncioService) {
       this.username = JSON.parse(window.localStorage.getItem("username"));
     }
@@ -30,9 +30,9 @@ export class AnunciosPage {
             return changes.filter (c => {
                 let anuncio = c.payload.val();
 				var hoy = new Date();
-				var fechaAnuncio = new Date(anuncio.fSalida+"T00:00:00");
+				var fechaAnuncio = new Date(anuncio.fSalida+"T23:59:00");
                 if (anuncio.nombreUsuario == this.username) {
-					if(hoy<fechaAnuncio){
+					if(hoy<=fechaAnuncio){
 						return true;
 					}else{
 						this.anunciosAntiguos.push(anuncio);
@@ -67,13 +67,13 @@ export class AnunciosPage {
             idAnuncio: id
         });
     }
-	
+
 	mostrarAnunciosAntiguos(){
 		document.getElementById("mostrarAnunciosAntiguosBtn").style.display = "none";
 		document.getElementById("ocultarAnunciosAntiguosBtn").style.display = "block";
 		document.getElementById("anunciosAntiguos").style.display = "block";
 	}
-	
+
 	ocultarAnunciosAntiguos(){
 		document.getElementById("mostrarAnunciosAntiguosBtn").style.display = "block";
 		document.getElementById("ocultarAnunciosAntiguosBtn").style.display = "none";

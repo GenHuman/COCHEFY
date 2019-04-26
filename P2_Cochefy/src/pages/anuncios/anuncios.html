@@ -12,7 +12,7 @@
   <h2 style="float:left;">Tus anuncios </h2>
   <button style="float:right; margin-top: 3vh !important;" ion-button round outline icon-only (click)="nuevoAnuncio()"><ion-icon name="add"></ion-icon></button>
   </div>
-  <div style="clear: both;" *ngIf="(anuncios$ | async)?.length==0">
+  <div style="clear: both;" *ngIf="(anuncios$ | async)?.length==0 && anunciosAntiguos.length==0">
       <h6 ion-text color="dark">No hay anuncios disponibles</h6>
   </div>
   <ion-list *ngFor="let anuncio of anuncios$ | async">
@@ -60,7 +60,7 @@
         <ion-row>
             <ion-col text-center>
                 <span *ngIf="anuncio.alquilado">
-                      <h4 ion-text color="danger">¡RESERVADO!</h4>
+                      <h4 ion-text color="danger">¡Reservado!</h4>
                 </span>
                 <span *ngIf="!anuncio.alquilado">
                     <button ion-button round (click)="verOfertas(anuncio.id)">Ver Ofertas</button>
@@ -137,10 +137,10 @@
         <ion-row>
             <ion-col text-center>
                 <span *ngIf="anuncio.alquilado">
-                      <h4 ion-text color="danger">¡RESERVADO!</h4>
+                      <h4 ion-text color="danger">¡Reservado!</h4>
                 </span>
                 <span *ngIf="!anuncio.alquilado">
-                    <button ion-button round (click)="verOfertas(anuncio.id)">Ver Ofertas</button>
+                    <h4 ion-text color="danger">No Reservado</h4>
                 </span>
             </ion-col>
         </ion-row>

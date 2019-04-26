@@ -1,6 +1,8 @@
 {
   "name": "Cochefy",
-  "integrations": {},
+  "integrations": {
+    "cordova": {}
+  },
   "type": "ionic-angular",
   "id": "9278f990"
 }

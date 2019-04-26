@@ -1,0 +1,7 @@
+ionic cordova build --release android
+
+C:/Program\ Files\ \(x86\)/Java/jre1.8.0_181/bin/keytool.exe -genkey -v -keystore my-release-key.keystore -alias alias_name -keyalg RSA -keysize 2048 -validity 10000
+
+C:/Program\ Files\ \(x86\)/Java/jdk1.8.0_191/bin/jarsigner.exe -verbose -sigalg SHA1withRSA -digestalg SHA1 -keystore my-release-key.keystore app-release-unsigned.apk alias_name
+
+C:/sdk-tools/build-tools/27.0.3/zipalign -v 4 app-release-unsigned.apk Cochefy.apk
